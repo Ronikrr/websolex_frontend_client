@@ -25,10 +25,10 @@ import click_through from "../Assets/click-through-rate.png";
 import marketing from "../Assets/marketing (1).png";
 import bullhorn from "../Assets/bullhorn.png";
 import digital_marketing from "../Assets/digital-marketing (1).png";
-import Maintitle from "../components/maintitle";
+
 
 function service() {
-  Maintitle("WebSolex-Service Page");
+
   return (
     <>
       <section className="service_page py-100">

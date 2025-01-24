@@ -1,7 +1,7 @@
 // import React from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './thankyou.css'; 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -67,39 +67,16 @@ const styles = {
 
 const ThankYou = () => {
 
-    // const [isPopupOpen, setIsPopupOpen] = useState(true); 
+    const navigate = useNavigate();
 
-    // const closePopup = () => {
-    //     setIsPopupOpen(false);
-    // };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate('/'); // Redirect to home page after 3 seconds
+        }, 3000);
 
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         closePopup();
-    //     }, 5000); 
-    //     return () => clearTimeout(timer); 
-    // }, []);
-
+        return () => clearTimeout(timer); // Clean up the timeout on unmount
+    }, [navigate]);
     return (
-        // <>
-        //   {isPopupOpen && (
-        //         <div className='modal-overlay py-100'>
-        //             <div className='modal-content'>
-        //                 <div className='checkmark'>
-        //                     <FontAwesomeIcon icon={faCheck} />
-        //                 </div>
-        //                 <h1 className='title'>THANK YOU!</h1>
-        //                 <p className='message'>
-        //                     Thanks a bunch for filling that out. It means a lot to us, just like you do! We really appreciate you giving us a moment of your time today. Thanks for being you.
-        //                 </p>
-        //                 <button className='close-button' onClick={closePopup}>
-        //                     Close
-        //                 </button>
-        //             </div>
-        //         </div>
-        //     )}
-        // </>
-
         <div className='thankyou_page py-100'>
             <div style={styles.message}>
                 <FontAwesomeIcon style={styles.checkmark} icon={faCheck} size="2x" color="green" />

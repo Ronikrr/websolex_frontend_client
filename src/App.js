@@ -29,9 +29,10 @@ import Career from "./pages/career";
 import Thankyou from "./components/thankyou";
 import Notfound from "./pages/notfound";
 import { BeatLoader } from "react-spinners";
+import PageTitle from "./components/PageTitle";
 const Layout = ({ children }) => {
 
-  
+
   return (
     <>
       <Header />
@@ -46,33 +47,98 @@ function App() {
     const wow = new WOW();
     wow.init(); // Initialize WOW.js
   }, []);
- 
+
   return (
-      <Router>
-     
-        <Routes>
-          <Route path="/" element={ <Layout><Home /></Layout> } />
-          <Route path="/portfolio" element={ <Layout><Portfolio /></Layout> } />
-          <Route path="/portfolio/:portfolioid" element={ <Layout><Portfolioview /></Layout> } />
-          <Route path="/company" element={ <Layout><Company /></Layout> } />
-          <Route path="/contact" element={ <Layout><Contact /></Layout> } />
-          <Route path="/service" element={ <Layout><Service /></Layout> } />
-          <Route path="/service/webdevelopment" element={ <Layout><Webdevelopment /></Layout> } />
-          <Route path="/service/graphic" element={ <Layout><Graphic /></Layout> } />
-          <Route path="/service/uiux" element={ <Layout><Uiux /></Layout> } />
-          <Route path="/service/mobileapps" element={ <Layout><MobileApp /></Layout>}  />
-          <Route path="/service/digital" element={ <Layout><Digital /></Layout> } />
-          <Route path="/blog" element={ <Layout><Blog /></Layout> } />
-          <Route path="/blog/:blogid" element={ <Layout><Businesspage /></Layout> } />
-          <Route path="/Career" element={ <Layout><Career /></Layout> } />
-          <Route path="/thankyou" element={ <Layout><Thankyou /></Layout> } />
-          <Route path="*" element={<Notfound />} />
-          {/* <Route path='/blog/bussiness' element={<Bussines/>} /> */}
-        </Routes>
-       
-      </Router>
-    )
-  
+    <Router>
+
+      <Routes>
+        <Route path="/" element={
+          <Layout>
+            <PageTitle title={`Home Page`} />
+            <Home />
+          </Layout>} />
+        <Route path="/portfolio" element={
+          <Layout>
+            <PageTitle title={`Portfolio Page`} />
+            <Portfolio />
+          </Layout>} />
+        <Route path="/portfolio/:portfolioid" element={
+          <Layout>
+            <PageTitle title={`Portfolio page`} />
+            <Portfolioview />
+          </Layout>} />
+        <Route path="/company" element={
+          <Layout>
+            <PageTitle title={`Company Page`} />
+            <Company />
+          </Layout>} />
+        <Route path="/contact" element={
+          <Layout>
+            <PageTitle title={`Contact Page`} />
+            <Contact />
+          </Layout>} />
+        <Route path="/service" element={
+          <Layout>
+            <PageTitle title={`Service Page`} />
+            <Service />
+          </Layout>} />
+        <Route path="/service/webdevelopment" element={
+          <Layout>
+            <PageTitle title={`Web development Page`} />
+            <Webdevelopment />
+          </Layout>} />
+        <Route path="/service/graphic" element={
+          <Layout>
+            <PageTitle title={`Graphic Page`} />
+            <Graphic />
+          </Layout>} />
+        <Route path="/service/uiux" element={
+          <Layout>
+            <PageTitle title={`Ui/Ux Page`} />
+            <Uiux />
+          </Layout>} />
+        <Route path="/service/mobileapps" element={
+          <Layout>
+            <PageTitle title={`App development Page`} />
+            <MobileApp />
+          </Layout>} />
+        <Route path="/service/digital" element={
+          <Layout>
+            <PageTitle title={`Digital marketing Page`} />
+            <Digital />
+          </Layout>} />
+        <Route path="/blog" element={
+          <Layout>
+            <PageTitle title={`Blog Page`} />
+            <Blog />
+          </Layout>} />
+        <Route path="/blog/:blogid" element={
+          <Layout>
+            <PageTitle title={`Blog Page`} />
+            <Businesspage />
+          </Layout>} />
+        <Route path="/Career" element={
+          <Layout>
+            <PageTitle title={`Carrer Page`} />
+            <Career />
+          </Layout>} />
+        <Route path="/thankyou" element={
+          <Layout>
+            <PageTitle title={`Thank You Page`} />
+            <Thankyou />
+          </Layout>} />
+        <Route path="*" element={
+          <>
+            <PageTitle title={`404 Error Page`} />
+            <Notfound />
+          </>
+        } />
+
+      </Routes>
+
+    </Router>
+  )
+
 }
 
 export default App;

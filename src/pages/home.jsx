@@ -8,11 +8,9 @@ import TechnologiesSection from '../components/technologies';
 import ReviewSection from '../components/Review';
 import Process from '../components/process';
 import Get from '../components/get';
-import Maintitle from '../components/maintitle';
 
 
 function home() {
-  Maintitle("WebSolex-Home Page")
   return (
     <>
     <Banner />
