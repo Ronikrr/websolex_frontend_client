@@ -80,12 +80,15 @@ const Footer = () => {
     //     setdata({ email: "" })
     // }
 
+    const EMAIL_KEY_SUBSCRIBR = process.env.EMAIL_KEY_SUBSCRIBR
+    const EMAIL_TEMPLATE_SUBSCRIBR = process.env.EMAIL_TEMPLATE_SUBSCRIBR
+    const EMAIL_APIKEY_SUBSCRIBR = process.env.EMAIL_APIKEY_SUBSCRIBR
     const onubmit = async (e) => {
         e.preventDefault();
         const emailParams = {
             email: data.email,
         }
-        emailjs.send('service_csia6iy', 'template_confirmation', emailParams, 'NuQv9XskxV05oXLmu')
+        emailjs.send(EMAIL_KEY_SUBSCRIBR, EMAIL_TEMPLATE_SUBSCRIBR, emailParams, EMAIL_APIKEY_SUBSCRIBR)
             .then(async (response) => {
                 try {
                     // Call your API to save the email to the server (backend)
