@@ -44,7 +44,7 @@ const Blog = () => {
                             {data.map((data, index) => (
                                 <div className="col-md-6 col-xl-4 mb-5" key={data._id} >
                                     <div className="blog_sub p-2">
-                                        <div className="blog_image mb-4">
+                                        <div className="blog_images mb-4">
                                             <img src={data.image} alt="" className='img-fluid box_image rounded-4' />
                                         </div>
                                         <div className="blog_content position-relative">
@@ -59,7 +59,7 @@ const Blog = () => {
                             ))}
                             <div className="col-md-6 col-xl-4 mb-5">
                                 <div className="blog_sub p-2">
-                                    <div className="blog_image mb-4">
+                                    <div className="blog_images mb-4">
                                         <img src={blog_one} alt="" className='img-fluid rounded-4' />
                                     </div>
                                     <div className="blog_content position-relative">
@@ -74,7 +74,7 @@ const Blog = () => {
                             </div>
                             <div className="col-md-6 col-xl-4 mb-5">
                                 <div className="blog_sub p-2">
-                                    <div className="blog_image mb-4">
+                                    <div className="blog_images mb-4">
                                         <img src={blog_two} alt="" className='img-fluid rounded-4' />
                                     </div>
                                     <div className="blog_content position-relative">
@@ -89,7 +89,7 @@ const Blog = () => {
                             </div>
                             <div className="col-md-6 col-xl-4 mb-5">
                                 <div className="blog_sub p-2">
-                                    <div className="blog_image mb-4">
+                                    <div className="blog_images mb-4">
                                         <img src={blog_3} alt="" className='img-fluid rounded-4' />
                                     </div>
                                     <div className="blog_content position-relative">
@@ -103,7 +103,7 @@ const Blog = () => {
                             </div>
                             <div className="col-md-6 col-xl-4 mb-5 mb-md-0">
                                 <div className="blog_sub p-2">
-                                    <div className="blog_image mb-4">
+                                    <div className="blog_images mb-4">
                                         <img src={blog_4} alt="" className='img-fluid rounded-4' />
                                     </div>
                                     <div className="blog_content position-relative">
@@ -117,7 +117,7 @@ const Blog = () => {
                             </div>
                             <div className="col-md-6 col-xl-4 mb-5 mb-md-0">
                                 <div className="blog_sub p-2">
-                                    <div className="blog_image mb-4">
+                                    <div className="blog_images mb-4">
                                         <img src={blog_5} alt="" className='img-fluid rounded-4' />
                                     </div>
                                     <div className="blog_content">

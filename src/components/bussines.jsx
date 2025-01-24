@@ -72,11 +72,11 @@ const Bussines = () => {
                                     <div className="bolg_new">
                                         <h2 className='mb-4 fw-bold text-center text-xl-start'>Latest New Blog</h2>
                                         <div className="bolg_sub d-flex ">
-                                            <Link className='d-flex text-dark text-decoration-none flex-wrap flex-xl-nowrap'>
+                                            <Link className='d-flex text-dark col-12 text-decoration-none flex-wrap flex-xl-nowrap'>
                                                 <div className="blog_image col-12  col-xl-3 me-2 d-flex justify-content-center mb-3">
                                                     <img src={blog_two} alt="" className='rounded-2 col-xl-12 ' />
                                                 </div>
-                                                <div className="sub_blog_contentcol-12  col-xl-9 text-center text-xl-start">
+                                                <div className="sub_blog_content col-12  col-xl-9 text-center text-xl-start">
                                                     <h6>1. How to Choose the Right IT Service Provider for Your Business</h6>
                                                     <p> Provide tips on selecting an IT service provider based on expertise, experience, support, and cost.</p>
                                                 </div>
