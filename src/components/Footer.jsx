@@ -8,7 +8,7 @@ import { SlSocialBehance } from "react-icons/sl";
 import { Link } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 import { useNavigate } from 'react-router-dom';
-
+import FeedbackMessage from './feedback';
 
 const Footer = () => {
     const navigate = useNavigate()
@@ -18,7 +18,11 @@ const Footer = () => {
 
     };
     const [number, setnumber] = useState('')
-    const [social, setsocial]=useState('')
+    const [social, setsocial] = useState('')
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
     useEffect(() => {
         const fetchcontactdata = async () => {
             try {
@@ -26,17 +30,26 @@ const Footer = () => {
                     method: 'GET'
                 });
                 if (!res.ok) {
-                    const errorMessage = await res.text(); // Get the error message from the response
-                    throw new Error(`HTTP error! status: ${res.status}, message: ${errorMessage}`);
+                    const errorMessage = await res.text();
+                    setFeedback({
+                        message: `Error fetching : ${errorMessage}`,
+                        type: "error",
+                    })
                 }
                 const data = await res.json();
                 if (Array.isArray(data) && data.length > 0) {
                     setnumber(data[0]);
                 } else {
-                    console.log("Contact data is empty or invalid format.");
+                    setFeedback({
+                        message: `Error:Contact data is empty or invalid format`,
+                        type: "error",
+                    })
                 }
             } catch (error) {
-                console.error("Error fetching contact data:", error.message);
+                setFeedback({
+                    message: `Error fetching : ${error.message}`,
+                    type: "error",
+                })
             }
         };
         const fetchsocialdata = async () => {
@@ -49,7 +62,10 @@ const Footer = () => {
                     setsocial(data[0]);
                 }
             } catch (error) {
-                console.log(error.message)
+                setFeedback({
+                    message: `Error fetching : ${error.message}`,
+                    type: "error",
+                })
             }
         }
         fetchsocialdata()
@@ -63,22 +79,8 @@ const Footer = () => {
             [name]: value
         }));
     }
-    console.log(social)
 
 
-    // const onubmit = (e) => {
-    //     e.preventDefault();
-    //     const emailParams = {
-    //         email: data.email,
-    //     }
-    //     emailjs.send('service_csia6iy', 'template_confirmation', emailParams, 'NuQv9XskxV05oXLmu')
-    //         .then((response) => {
-    //             navigate('/thankyou');
-    //         }, (error) => {
-    //             alert(`FAILD... ${error}`);
-    //         });
-    //     setdata({ email: "" })
-    // }
 
     const EMAIL_KEY_SUBSCRIBR = process.env.EMAIL_KEY_SUBSCRIBR
     const EMAIL_TEMPLATE_SUBSCRIBR = process.env.EMAIL_TEMPLATE_SUBSCRIBR
@@ -121,6 +123,7 @@ const Footer = () => {
 
     return (
         <>
+            {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
             <section className="footer-area pt-50 pt-100 d-none d-lg-block">
                 <div className="container">
                     <div className="row">
@@ -181,7 +184,7 @@ const Footer = () => {
                                 <div className="single-footer-widget text-md-left wow fadeInDown animated">
                                     <div className="single-title-wrapper title">
                                         <div className="title-footer">
-                                            <h3 className="footer-block__heading mb-4">Websolex</h3>
+                                            <h3 className="footer-block__heading mb-4">Pages</h3>
                                         </div>
                                         <ul className="footer-quick-links pt-10 footer-toggle ps-0">
                                             <li className='mb-3'>

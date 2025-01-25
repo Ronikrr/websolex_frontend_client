@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import lineimg from '../Assets/line.png';
-
+import FeedbackMessage from './feedback';
 const missionData = {
     'mission': [
         { id: 1, name: 'Mission', discription: 'At Websolex Infotech, our mission is to deliver exceptional digital solutions that drive business growth and enhance user experiences. We are committed to providing top-quality website design, development, application development, UI/UX design, graphics design, and digital marketing services. Our goal is to help businesses navigate the digital landscape with innovative, reliable, and tailored solutions that meet their unique needs. We strive to exceed client expectations through our dedication to quality, creativity, and customer satisfaction, all while fostering a collaborative and inclusive work environment.' },
@@ -14,8 +14,10 @@ const missionData = {
 
 function Mission() {
      const [project, setproject] = useState('');
-    
-    
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
     
         useEffect(() => {
             const fetchprojectdata = async () => {
@@ -24,6 +26,12 @@ function Mission() {
                         method:'GET'
                     }
                 )
+                if (!res.ok) {
+                    setFeedback({
+                        message: `Error :Failed to fetch team data  ${res.message}`,
+                        type: "error",
+                    })
+                }
                 const data = await res.json();
                 if (data && data.length > 0 ) {
                     setproject(data[0])
@@ -33,6 +41,7 @@ function Mission() {
         })
     return (
         <>
+            {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
             <section className="mission_section py-50">
                 <div className="container">
                     <div className="row">

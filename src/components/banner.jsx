@@ -9,36 +9,53 @@ import { FaStar } from "react-icons/fa";
 import report_graf from '../Assets/sale-report-removebg-preview.png'
 import graf2 from '../Assets/garf.png'
 import { convertToK } from './convertto';
-
+import FeedbackMessage from './feedback';
 function Banner() {
     const [project, setproject] = useState([]);
     const [statics, setstatic] = useState([]);
 
-
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
 
     useEffect(() => {
         const fetchprojectdata = async () => {
             const res = await fetch('https://websolex-admin.vercel.app/api/project',
                 { method: 'GET' }
             )
+            if (!res.ok) {
+                setFeedback({
+                    message: `Error : ${res.message}`,
+                    type: "error",
+                })
+            }
             const data = await res.json();
             if (data && data.length > 0) {
                 setproject(data[0].completedProjects)
             }
+
         }
         fetchprojectdata()
         const fetchprojectstatic = async () => {
             const res = await fetch('https://websolex-admin.vercel.app/api/setstatic',
                 { method: 'GET' }
             )
+            if (!res.ok) {
+                setFeedback({
+                    message: `Error : ${res.message}`,
+                    type: "error",
+                })
+            } 
             const data = await res.json();
             if (data && data.length > 0) {
                 setstatic(data[0])
             }
+
         }
         fetchprojectdata()
         fetchprojectstatic()
-    })
+    }, [])
     
 
     const handleTabClick = (tab) => {
@@ -47,8 +64,7 @@ function Banner() {
     return (
         <>
 
-
-
+            {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
             <section className='banner2'>
                 <div className="container">
                     <div className="row">
@@ -58,9 +74,8 @@ function Banner() {
                                     <h2 className='text-light fs-1'>Empowering Your Digital Transformation</h2>
                                     <p className='text-light'>At WebSolex Infotech, we specialize in delivering cutting-edge technology solutions that drive innovation and efficiency. From website development to application design, UI/UX services, graphics design, and digital marketing, we provide a full suite of IT services tailored to your needs. Let's build your digital future together.</p>
                                     <div className="banner_button2 d-flex pb-5 border-bottom justify-content-center justify-content-lg-start">
-                                        {/* <a onClick={handleTabClick} to="/contact" className='text-decoration-none text-light bg-light text-dark rounded-pill  me-3 border hover_button1'>Get Started</a> */}
+
                                         <Link onClick={handleTabClick} to="/contact" className='text-decoration-none text-light bg-light text-dark rounded-pill  me-3 border hover_button1'>Get Started</Link>
-                                        {/* <a href="javascript:void(0);" className='text-decoration-none text-light d-flex align-items-center  border hover_button2 rounded-pill'><IoIosPlay className='me-1' />Watch Video</a> */}
                                     </div>
                                     <div className="col-12 d-flex flex-wrap justify-content-center justify-content-center  text-center text-sm-start text-md-center text-lg-start mt-3 mt-md-0">
                                         <div className="col-6 col-sm-4">
@@ -83,7 +98,7 @@ function Banner() {
                                         </div>
                                         <div className="col-7 col-sm-4 mt-3 mt-md-0">
                                             <div className="banner_number_sub pt-md-3 pt-xxl-4 px-md-2 px-xxl-4 text-light">
-                                                <h2>{statics.registeredcustomers}+</h2>
+                                                <h2>{statics?.registeredcustomers}+</h2>
                                                 <p>Registered Customers</p>
                                             </div>
                                         </div>

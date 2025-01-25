@@ -8,15 +8,13 @@ import UIUX from '../Assets/uiux-icon.png'
 import mobile from '../Assets/mobile.png'
 import Digital from '../Assets/digital_marketing.png'
 
-const Header = (pagetitle) => {
+const Header = () => {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [activeTab, setActiveTab] = useState('Home');
     const [mouseEnter, setMouseEnter] = useState(false)
-    const [title, setTitle] = useState(pagetitle);
     const [number, setnumber] = useState('');
-    useEffect(() => {
-        document.title = title;
-    }, [title]); 
+    const [categories, setCategories] = useState([]);
+    const [categoryServices, setCategoryServices] = useState({});
 
 
     const toggleNavbar = () => {
@@ -28,7 +26,9 @@ const Header = (pagetitle) => {
         window.scrollTo(0, 0);
         setIsCollapsed(true);
     };
-
+    const scrolltotop = () => {
+        window.scrollTo(0, 0);
+    }
     useEffect(() => {
         const fetchcontactdata = async () => {
             try {
@@ -51,8 +51,49 @@ const Header = (pagetitle) => {
         };
         fetchcontactdata()
     }, [])
+    useEffect(() => {
+        const fetchcontactservice = async () => {
+            try {
+                const res = await fetch('https://websolex-admin.vercel.app/api/service/', {
+                    method: 'GET'
+                });
+                if (!res.ok) {
+                    const errorMessage = await res.text(); // Get the error message from the response
+                    throw new Error(`HTTP error! status: ${res.status}, message: ${errorMessage}`);
+                }
+                const data = await res.json();
+                console.log(data.map((data) => data.category))
+                if (Array.isArray(data) && data.length > 0) {
+                    setCategories(data.map((data) => data.category))
+                }
+            } catch (error) {
+                console.error("Error fetching contact data:", error.message);
+            }
+        };
+        fetchcontactservice()
 
-  
+    }, [])
+
+    useEffect(() => {
+        const fetchallservices = async () => {
+            const servicedata = {}
+            for (const category of categories) {
+                try {
+                    const res = await fetch(`https://websolex-admin.vercel.app/api/service/${category}`)
+                    if (!res.ok) throw new Error(`Error: ${res.statusText}`);
+                    const data = await res.json()
+                    servicedata[category] = Array.isArray(data) ? data.map((service) => service.title) : []
+                } catch (error) {
+                    console.error(`Error fetching services for category ${category}:`, error.message);
+                    servicedata[category] = []; // Default to an empty array on error
+                }
+
+            }
+            setCategoryServices(servicedata)
+            console.log(servicedata)
+        }
+        fetchallservices()
+    }, [categories])
 
 
     const ServiceTab = [
@@ -174,8 +215,7 @@ const Header = (pagetitle) => {
                         <div className="row">
                             <nav className="navbar navbar-expand-lg">
                                 <div className="container-fluid">
-                                    <Link className="navbar-brand col-2 " to="/"  onClick={() => { handleTabClick('Home'); setTitle('WebSolex Infotech || Home');
-                                    }}><img src={logo} alt="WebSolex Infotech"/></Link>
+                                    <Link className="navbar-brand col-2 " to="/" ><img src={logo} alt="WebSolex Infotech" /></Link>
                                     <button className="navbar-toggler" type="button" onClick={toggleNavbar} aria-expanded={!isCollapsed}>
                                         <span className="navbar-toggler-icon"></span>
                                     </button>
@@ -183,21 +223,15 @@ const Header = (pagetitle) => {
                                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                             <li className="nav-item p-3 text-center">
                                                 <Link className={`nav-link  ${activeTab === 'Home' ? 'active text-primary fw-bold' : ''}`} to="/"
-                                                    onClick={() => {
-                                                        handleTabClick('Home');
-                                                        setTitle('WebSolex Infotech || Home');
-                                                    }}
+                                                    onClick={() => handleTabClick('Home')}
                                                 >
                                                     Home
                                                 </Link>
                                             </li>
                                             <li className="nav-item servicemenu dropdown megamenu-li dmenu d-flex align-items-center">
                                                 <Link className={`nav-link link_hover dropdown-toggle ${activeTab === 'Services' ? 'active text-primary fw-bold' : ''}`} to="#"
-                                                    onClick={() => {
-                                                        handleTabClick('Services');
-                                                        setTitle('WebSolex Infotech || Services');
-                                                    }}
-                                                    onMouseEnter={() => setMouseEnter(true)} >
+                                                    onMouseEnter={() => setMouseEnter(true)}
+                                                    onClick={() => handleTabClick('Services')}>
                                                     Services
                                                 </Link>
                                                 {
@@ -223,31 +257,20 @@ const Header = (pagetitle) => {
                                             </li>
                                             <li className="nav-item p-3 text-center ">
                                                 <Link className={`nav-link link_hover  ${activeTab === 'Portfolio' ? 'active text-primary fw-bold' : ''}`}
-
-                                                    onClick={() => {
-                                                        handleTabClick('Portfolio');
-                                                        setTitle('WebSolex Infotech || Portfolio');
-                                                    }}
+                                                    onClick={() => handleTabClick('Portfolio')}
                                                     to="/portfolio">
                                                     Portfolio
                                                 </Link>
                                             </li>
                                             <li className="nav-item py-3 ps-0 pe-3 text-center ">
-                                                <Link className={`nav-link link_hover  ${activeTab === 'Company' ? 'active text-primary fw-bold' : ''}`}
-                                                    onClick={() => {
-                                                        handleTabClick('Company');
-                                                        setTitle('WebSolex Infotech || Company');
-                                                    }}
+                                                <Link onClick={() => handleTabClick('Company')} className={`nav-link link_hover  ${activeTab === 'Company' ? 'active text-primary fw-bold' : ''}`}
                                                     to="/company">
                                                     Company
                                                 </Link>
                                             </li>
                                             <li className="nav-item py-3 ps-0 pe-3 text-center ">
-                                                <Link className={`nav-link link_hover  ${activeTab === 'contact' ? 'active text-primary fw-bold' : ''}`}
-                                                    onClick={() => {
-                                                        handleTabClick('contact');
-                                                        setTitle('WebSolex Infotech || Contact');
-                                                    }} to="/contact">
+                                                <Link onClick={() => handleTabClick('contact')} className={`nav-link link_hover  ${activeTab === 'contact' ? 'active text-primary fw-bold' : ''}`}
+                                                    to="/contact">
                                                     Contact
                                                 </Link>
                                             </li>
@@ -284,8 +307,7 @@ const Header = (pagetitle) => {
                                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                             <li className="nav-item p-3 text-center">
                                                 <Link className={`nav-link ${activeTab === 'Home' ? 'active text-primary fw-bold' : ''}`} to="/"
-                                                    onClick={() => handleTabClick('Home')}
-                                                >
+                                                    onClick={() => handleTabClick('Home')}>
                                                     Home
                                                 </Link>
                                             </li>
@@ -294,26 +316,6 @@ const Header = (pagetitle) => {
                                                     onClick={() => handleTabClick('Services')} to="/service">
                                                     Services
                                                 </Link>
-                                                {/* <ul className="dropdown-menu">
-                                                    <li>
-                                                        <Link className="dropdown-item" to="#">Mobile Apps</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link className="dropdown-item" to="#">Web Development</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link className="dropdown-item" to="#">Graphic Design</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link className="dropdown-item" to="#">Game Development</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link className="dropdown-item" to="#">UI/UX Design</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link className="dropdown-item" to="#">3D Modeling</Link>
-                                                    </li>
-                                                </ul> */}
                                             </li>
                                             <li className="nav-item p-3 text-center">
                                                 <Link className={`nav-link link_hover ${activeTab === 'Portfolio' ? 'active text-primary fw-bold' : ''}`}
@@ -348,41 +350,6 @@ const Header = (pagetitle) => {
                     </div>
                 </div>
             </header>
-            {/* <header>
-                <div className="header d-block d-lg-none sticky-top">
-                    <div className="container">
-                        <div className="row">
-                            <Navbar expand="lg" className="px-2">
-                                <Navbar.Brand href="#">
-                                    <img src={logo} alt="Logo" className="col-2" />
-                                </Navbar.Brand>
-                                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                                <Navbar.Collapse id="basic-navbar-nav">
-                                    <Nav className="me-auto mb-2 mb-lg-0">
-                                        <Nav.Link href="/" className={`${activeTab === 'Home' ? 'active text-primary fw-bold' : ''}`}>Home</Nav.Link>
-                                        <NavDropdown title="Services" id="basic-nav-dropdown" className={`${activeTab === 'Services' ? 'active text-primary fw-bold' : ''}`}>
-                                            <NavDropdown.Item href="#">Mobile Apps</NavDropdown.Item>
-                                            <NavDropdown.Item href="#">Web Development</NavDropdown.Item>
-                                            <NavDropdown.Item href="#">Graphic Design</NavDropdown.Item>
-                                            <NavDropdown.Item href="#">Game Development</NavDropdown.Item>
-                                            <NavDropdown.Item href="#">UI/UX Design</NavDropdown.Item>
-                                            <NavDropdown.Item href="#">3D Modeling</NavDropdown.Item>
-                                        </NavDropdown>
-                                        <Nav.Link href="/portfolio" className={`${activeTab === 'Portfolio' ? 'active text-primary fw-bold' : ''}`}>Portfolio</Nav.Link>
-                                        <Nav.Link href="/company" className={`${activeTab === 'Company' ? 'active text-primary fw-bold' : ''}`}>Company</Nav.Link>
-                                        <Nav.Link href="/contact" className={`${activeTab === 'contact' ? 'active text-primary fw-bold' : ''}`}>Contact</Nav.Link>
-                                    </Nav>
-                                    <form className="d-flex justify-content-center" role="search">
-                                        <Button variant="primary">
-                                            <FaPhone className='bell me-2' />+91 8200845977
-                                        </Button>
-                                    </form>
-                                </Navbar.Collapse>
-                            </Navbar>
-                        </div>
-                    </div>
-                </div>
-            </header> */}
         </>
     );
 };

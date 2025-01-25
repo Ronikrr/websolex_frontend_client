@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import EmailJS from 'emailjs-com';
 import '../forms.css';
 import { AiFillInstagram } from "react-icons/ai";
-
+import FeedbackMessage from './feedback';
 const From = () => {
     const navigate = useNavigate();
     const [data, setdata] = useState({
@@ -17,7 +17,6 @@ const From = () => {
         subject: "",
         message: "",
     });
-
     const [showtextbox, setotherinput] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [dangerMessage, setsdangerMessage] = useState('');
@@ -25,6 +24,10 @@ const From = () => {
         email: "",
         contactnumber: "",
     });
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
     const [diractcontact, setdiractcontact] = useState('');
     const [diractsocial, setdiractsocial] = useState('');
     useEffect(() => {
@@ -34,17 +37,27 @@ const From = () => {
                     method: 'GET'
                 });
                 if (!res.ok) {
-                    const errorMessage = await res.text(); // Get the error message from the response
-                    throw new Error(`HTTP error! status: ${res.status}, message: ${errorMessage}`);
+                    const errorMessage = await res.text();
+                    setFeedback({
+                        message: `Error fetching : ${errorMessage}`,
+                        type: "error",
+                    })
                 }
                 const data = await res.json();
                 if (Array.isArray(data) && data.length > 0) {
                     setdiractcontact(data[0]);
                 } else {
-                    console.log("Contact data is empty or invalid format.");
+
+                    setFeedback({
+                        message: `Error :Contact data is empty or invalid format.`,
+                        type: "error",
+                    })
                 }
             } catch (error) {
-                console.error("Error fetching contact data:", error.message);
+                setFeedback({
+                    message: `Error fetching : ${error.message}`,
+                    type: "error",
+                })
             }
         };
 
@@ -58,7 +71,10 @@ const From = () => {
                     setdiractsocial(data[0]);
                 }
             } catch (error) {
-                console.log(error.message)
+                setFeedback({
+                    message: `Error fetching : ${error.message}`,
+                    type: "error",
+                })
             }
         }
 
@@ -134,15 +150,23 @@ const From = () => {
         return EmailJS.send(EMAIL_KEY_CONTACT, EMAIL_TEMPLATE_CONTACT, emailParams, EMAIL_APIKEY_CONTACT)
             .then(response => {
                 if (response.status === 200) {
-                    console.log('Email successfully sent via EmailJS:', response);
+                    setFeedback({
+                        message: `Email successfully sent via EmailJS: ${response}`,
+                        type: "success",
+                    })
                     return true;
                 } else {
-                    throw new Error('EmailJS failed to send.');
+                    setFeedback({
+                        message: `Error : EmailJS failed to send.`,
+                        type: "error",
+                    })
                 }
             })
             .catch(error => {
-                console.error('EmailJS Error:', error);
-                throw error;
+                setFeedback({
+                    message: `Error fetching : ${error.message}`,
+                    type: "error",
+                })
             });
     };
 
@@ -157,14 +181,19 @@ const From = () => {
             .then(response => {
                 if (!response.ok) {
                     return response.text().then(errorMessage => {
-                        throw new Error(`Form submission failed: ${errorMessage}`);
+                        setFeedback({
+                            message: `Error linnno:186 : ${errorMessage}`,
+                            type: "error",
+                        })
                     });
                 }
                 return response.json();
             })
             .catch(error => {
-                console.error('API Error:', error);
-                throw error;
+                setFeedback({
+                    message: `Error linnno:195  : ${error.message}`,
+                    type: "error",
+                })
             });
     };
 
@@ -172,7 +201,10 @@ const From = () => {
         e.preventDefault();
 
         if (errors.email || errors.contactnumber) {
-            alert("Please correct email and contact number.");
+            setFeedback({
+                message: `Error : Please correct email and contact number.`,
+                type: "error",
+            })
             return;
         }
 
@@ -187,6 +219,10 @@ const From = () => {
         try {
             await sendEmail(emailParams);
             await submitFormToAPI(emailParams);
+            setFeedback({
+                message: `Form submitted successfully!`,
+                type: "success",
+            })
             navigate("/thankyou");
             setdata({
                 name: "",
@@ -195,9 +231,13 @@ const From = () => {
                 subject: "",
                 message: "",
             });
-            setSuccessMessage("Form submitted successfully!");
+
+
         } catch (error) {
-            setsdangerMessage(`An error occurred: ${error.message}`);
+            setFeedback({
+                message: `An error occurred : ${error.message}`,
+                type: "error",
+            })
         }
     };
 
@@ -207,6 +247,7 @@ const From = () => {
 
     return (
         <>
+            {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
             <section className="contact_form">
                 <div className="container">
                     <div className="row justify-content-center">

@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import FeedbackMessage from "./feedback";
 const Portfolioview = () => {
   const { portfolioid } = useParams(); // Extract 'portfolioid'
-  console.log(portfolioid)
   const [portfolioData, setportfolioData] = useState([])
-  
+  const [feedback, setFeedback] = useState({ message: "", type: "" })
+  const handleClear = () => {
+    setFeedback({ message: "", type: "" })
+  }
 
   useEffect(() => {
     const fetchdata = async () => {
       try {
         const response = await fetch(`https://websolex-admin.vercel.app/api/lastworkadd/${portfolioid}`);
         if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.status}`);
+          setFeedback({
+            message: `Error :Failed to fetch team data  ${response.message}`,
+            type: "error",
+          })
         }
         const data = await response.json();
         setportfolioData(data);
       } catch (error) {
-        console.log(error.message)
+        setFeedback({
+          message: `Error :Failed to fetch team data  ${error.message}`,
+          type: "error",
+        })
       }
     }
     fetchdata();
   }, [portfolioid])
-  // Convert portfolioid to an integer and find the corresponding portfolio data
 
 
   if (!portfolioData) {
@@ -32,6 +39,7 @@ const Portfolioview = () => {
 
   return (
     <>
+      {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
       <section className=" data ">
         <div className="container ">
           {/* <h2 className="mt-4">{portfolioData.category} Portfolio</h2> */}

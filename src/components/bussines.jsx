@@ -14,22 +14,31 @@ import { Link, useParams } from 'react-router-dom';
 const Bussines = () => {
     const { blogid } = useParams();
     const [blogdata, setblogdata] = useState([])
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
     useEffect(() => {
         const fetchdata = async () => {
             try {
                 const response = await fetch(`https://websolex-admin.vercel.app/api/blogpage/${blogid}`);
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch data: ${response.status}`);
+                    setFeedback({
+                        message: `Error fetching : ${response.message}`,
+                        type: "error",
+                    })
                 }
                 const data = await response.json();
                 setblogdata(data);
             } catch (error) {
-                console.log(error.message)
+                setFeedback({
+                    message: `Error fetching : ${error.message}`,
+                    type: "error",
+                })
             }
         }
         fetchdata();
     }, [blogid])
-    console.log(blogdata)
     if (!blogdata) {
         return <div>No portfolio found for "{blogid}"</div>;
     }

@@ -30,14 +30,26 @@ import Thankyou from "./components/thankyou";
 import Notfound from "./pages/notfound";
 import { BeatLoader } from "react-spinners";
 import PageTitle from "./components/PageTitle";
+import Loader from "./components/loader";
 const Layout = ({ children }) => {
-
-
+  const [loading, setLoading] = useState(true);
+  React.useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
-      <Header />
-      <main className="m-0 p-0"> {children} </main>
-      <Footer />
+      <div className="">
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+              <Header />
+              <main className="m-0 p-0"> {children} </main>
+              <Footer />
+            </>
+        )}
+      </div>
     </>
   );
 };
@@ -133,6 +145,7 @@ function App() {
             <Notfound />
           </>
         } />
+
 
       </Routes>
 

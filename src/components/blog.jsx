@@ -6,13 +6,16 @@ import blog_4 from '../Assets/therole.jpeg';
 import blog_5 from '../Assets/customsoftwe.jpeg';
 import { MdArrowOutward } from "react-icons/md";
 import { Link } from 'react-router-dom';
-
+import FeedbackMessage from './feedback';
 
 
 
 const Blog = () => {
-
     const [data, setdata] = useState([])
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
     useEffect(() => {
         const fetchadd = async () => {
             const res = await fetch(`https://websolex-admin.vercel.app/api/blogpage`,
@@ -21,21 +24,27 @@ const Blog = () => {
                 }
             )
             if (!res.ok) {
-                console.log(res.message)
+                const errorMessage = await res.text();
+                setFeedback({
+                    message: `Error fetching : ${errorMessage}`,
+                    type: "error",
+                })
             }
             const data = await res.json()
             setdata(data)
+
         }
         fetchadd()
     }, [])
-    console.log(data)
     const handleTabClick = () => {
         window.scrollTo(0, 0);
     };
 
 
+
     return (
         <>
+            {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
             <section className='blog_section pb-100'>
                 <div className="container">
                     <div className="row">

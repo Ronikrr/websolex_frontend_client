@@ -199,7 +199,7 @@ function Service() {
                       <p className="mb-1 fs-14">{service.description}</p>
                     </div>
                     <div className="social d-flex mt-4 justify-content-end">
-                      <Link to="javascript:void(0);">
+                      <Link to="#">
                         <FaArrowRight className="arrow" />
                       </Link>
                     </div>
