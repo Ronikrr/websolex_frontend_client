@@ -28,7 +28,7 @@ const From = () => {
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
     }
-    const [diractcontact, setdiractcontact] = useState('');
+    const [diractcontact, setdiractcontact] = useState([]);
     const [diractsocial, setdiractsocial] = useState('');
     useEffect(() => {
         const fetchcontactdata = async () => {
@@ -44,15 +44,9 @@ const From = () => {
                     })
                 }
                 const data = await res.json();
-                if (Array.isArray(data) && data.length > 0) {
-                    setdiractcontact(data[0]);
-                } else {
 
-                    setFeedback({
-                        message: `Error :Contact data is empty or invalid format.`,
-                        type: "error",
-                    })
-                }
+                setdiractcontact(data[0]);
+
             } catch (error) {
                 setFeedback({
                     message: `Error fetching : ${error.message}`,
@@ -386,6 +380,7 @@ const From = () => {
                                 </div>
 
                                 <div className="col-12 d-flex flex-wrap px-0 pt-5">
+
                                     <div className="col-12 col-md-6 ps-0">
                                         <div className="me-0 me-md-3 me-xl-2 me-xxl-4">
                                             <div className="contact_sub_boxx d-xxl-flex col-12 text-center text-xxl-start border rounded-2 mb-4 wow animate__animated animate__fadeInRight">
@@ -412,7 +407,7 @@ const From = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col- 12 col-md-6 ps-0">
+                                    <div className="col-12 col-md-6 ps-0">
                                         <div className="me-0 me-md-3 me-xl-2 me-xxl-4">
                                             <div className="contact_sub_boxx d-xxl-flex col-12 text-center text-xxl-start border rounded-2 mb-4 mb-md-0 wow animate__animated animate__fadeInRight">
                                                 <div className="contact_icons_bg me-xxl-3 d-flex justify-content-center mb-3 mb-xxl-0">
@@ -464,7 +459,7 @@ const From = () => {
                                             </Link>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>l
                             </div>
                         </div>
                     </div>

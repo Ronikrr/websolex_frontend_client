@@ -13,8 +13,7 @@ const Header = () => {
     const [activeTab, setActiveTab] = useState('Home');
     const [mouseEnter, setMouseEnter] = useState(false)
     const [number, setnumber] = useState('');
-    const [categories, setCategories] = useState([]);
-    const [categoryServices, setCategoryServices] = useState({});
+
 
 
     const toggleNavbar = () => {
@@ -26,9 +25,6 @@ const Header = () => {
         window.scrollTo(0, 0);
         setIsCollapsed(true);
     };
-    const scrolltotop = () => {
-        window.scrollTo(0, 0);
-    }
     useEffect(() => {
         const fetchcontactdata = async () => {
             try {
@@ -51,49 +47,9 @@ const Header = () => {
         };
         fetchcontactdata()
     }, [])
-    useEffect(() => {
-        const fetchcontactservice = async () => {
-            try {
-                const res = await fetch('https://websolex-admin.vercel.app/api/service/', {
-                    method: 'GET'
-                });
-                if (!res.ok) {
-                    const errorMessage = await res.text(); // Get the error message from the response
-                    throw new Error(`HTTP error! status: ${res.status}, message: ${errorMessage}`);
-                }
-                const data = await res.json();
-                console.log(data.map((data) => data.category))
-                if (Array.isArray(data) && data.length > 0) {
-                    setCategories(data.map((data) => data.category))
-                }
-            } catch (error) {
-                console.error("Error fetching contact data:", error.message);
-            }
-        };
-        fetchcontactservice()
 
-    }, [])
 
-    useEffect(() => {
-        const fetchallservices = async () => {
-            const servicedata = {}
-            for (const category of categories) {
-                try {
-                    const res = await fetch(`https://websolex-admin.vercel.app/api/service/${category}`)
-                    if (!res.ok) throw new Error(`Error: ${res.statusText}`);
-                    const data = await res.json()
-                    servicedata[category] = Array.isArray(data) ? data.map((service) => service.title) : []
-                } catch (error) {
-                    console.error(`Error fetching services for category ${category}:`, error.message);
-                    servicedata[category] = []; // Default to an empty array on error
-                }
 
-            }
-            setCategoryServices(servicedata)
-            console.log(servicedata)
-        }
-        fetchallservices()
-    }, [categories])
 
 
     const ServiceTab = [
