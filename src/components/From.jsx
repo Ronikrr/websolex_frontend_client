@@ -18,8 +18,6 @@ const From = () => {
         message: "",
     });
     const [showtextbox, setotherinput] = useState(false);
-    const [successMessage, setSuccessMessage] = useState('');
-    const [dangerMessage, setsdangerMessage] = useState('');
     const [errors, seterror] = useState({
         email: "",
         contactnumber: "",
@@ -249,16 +247,6 @@ const From = () => {
                             <h3 className="fw-semibold mb-4 wow animate__animated animate__fadeInDown">Let’s Connect and Create Something Amazing!</h3>
                             <p className='wow animate__animated animate__fadeInDown'>We’re here to answer your questions, discuss your ideas, and help your business grow. Reach out to us anytime we’d love to hear from you!</p>
                         </div>
-                        {successMessage && (
-                            <div className="alert alert-success mt-4" role="alert">
-                                {successMessage}
-                            </div>
-                        )}
-                        {dangerMessage && (
-                            <div className="alert alert-danger mt-4" role="alert">
-                                {dangerMessage}
-                            </div>
-                        )}
                         <div className="col-12 d-flex flex-wrap align-items-center">
                             <div className="col-12 col-xl-6 mb-5 mb-xl-0">
                                 <div className="contact_form_sub rounded-3 m-xl-3">

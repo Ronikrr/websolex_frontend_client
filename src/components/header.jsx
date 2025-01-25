@@ -48,10 +48,6 @@ const Header = () => {
         fetchcontactdata()
     }, [])
 
-
-
-
-
     const ServiceTab = [
         {
             name: "Web Development",
