@@ -314,7 +314,7 @@ const scrollToTop = () => {
 
 const PortfolioSection = () => {
   const [portfolios, setPortfolios] = useState([]);
-  const [activeTab, setActiveTab] = useState("Graphic Design");
+  const [activeTab, setActiveTab] = useState("web design");
   const [categories, setCategories] = useState([]);
   const [displayLimit, setDisplayLimit] = useState(4);
   const [feedback, setFeedback] = useState({ message: "", type: "" })
@@ -343,7 +343,6 @@ const PortfolioSection = () => {
   const filteredPortfolios = portfolios
     .filter((portfolio) => portfolio.category === activeTab)
     .slice(0, displayLimit);
-
   return (
     <>
       {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
