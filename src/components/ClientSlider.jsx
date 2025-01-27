@@ -90,7 +90,6 @@ import '../App.css';
 
 function Clientside() {
     const [logos, setLogos] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -101,17 +100,15 @@ function Clientside() {
                 if (!response.ok) throw new Error('Failed to fetch logos');
                 const data = await response.json();
                 setLogos(data);
-                setIsLoading(false);
+
             } catch (err) {
                 setError(err.message);
-                setIsLoading(false);
             }
         };
 
         fetchLogos();
     }, []);
 
-    if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
@@ -122,7 +119,33 @@ function Clientside() {
                 </div>
                 <div className="clients col-12 text-center mb-md-3">
                     <div className="col-12 d-flex flex-wrap justify-content-center">
-                        {logos.map((logo, index) => (
+                        {logos.slice(0, 4).map((logo, index) => (
+                            <div key={index} className="box col-md-6 col-xl-3">
+                                <div className="box_body m-2 rounded-1 border-bottom">
+                                    <img
+                                        src={logo.image}
+                                        className="img-fluid image_shadow wow animate__animated animate__fadeIn "
+                                        alt={logo.altText || 'Client Logo'}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="col-12 d-flex flex-wrap justify-content-center">
+                        {logos.slice(4, 7).map((logo, index) => (
+                            <div key={index} className="box col-md-6 col-xl-3">
+                                <div className="box_body m-2 rounded-1 border-bottom">
+                                    <img
+                                        src={logo.image}
+                                        className="img-fluid image_shadow wow animate__animated animate__fadeIn "
+                                        alt={logo.altText || 'Client Logo'}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="col-12 d-flex flex-wrap justify-content-center">
+                        {logos.slice(7, 9).map((logo, index) => (
                             <div key={index} className="box col-md-6 col-xl-3">
                                 <div className="box_body m-2 rounded-1 border-bottom">
                                     <img
@@ -141,3 +164,6 @@ function Clientside() {
 }
 
 export default Clientside;
+
+
+
