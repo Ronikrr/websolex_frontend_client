@@ -44,17 +44,17 @@ const Portfolioview = () => {
         <div className="container ">
           {/* <h2 className="mt-4">{portfolioData.category} Portfolio</h2> */}
           <div className="row justify-content-center">
-            <div className=" d-flex align-align-items-center justify-content-center col-12" >
+            <div className=" d-flex align-items-center justify-content-center col-12 flex-column flex-lg-row" >
               <div className="mb-4 col-12 col-md-6 ">
-                <h1 className="heading" >{portfolioData.name}</h1>
-                <h4>{portfolioData.category}</h4>
-                <p>{portfolioData.work}</p>
+                <h1 className="heading text-capitalize" >{portfolioData.name}</h1>
+                <h4 className="text-capitalize" >{portfolioData.category}</h4>
+                <p className="text-capitalize" >{portfolioData.work}</p>
                 <p>{portfolioData.description}</p>
               </div>
               <div className="mb-4 col-12 col-md-6 ">
                 <img
                   src={portfolioData.image}
-                  className="PortfolioImage "
+                  className="PortfolioImage"
                   alt={portfolioData.alt}
                 />
               </div>

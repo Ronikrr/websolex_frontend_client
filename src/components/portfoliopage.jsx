@@ -349,7 +349,7 @@ const scrollToTop = () => {
 
 const PortfolioSection = () => {
   const [portfolios, setPortfolios] = useState([]);
-  const [activeTab, setActiveTab] = useState("Graphic Design");
+  const [activeTab, setActiveTab] = useState("web design");
   const [categories, setCategories] = useState([]);
 
   // Fetch portfolio data from the API
