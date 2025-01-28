@@ -14,27 +14,20 @@ import { Link, useParams } from 'react-router-dom';
 const Bussines = () => {
     const { blogid } = useParams();
     const [blogdata, setblogdata] = useState([])
-    const [feedback, setFeedback] = useState({ message: "", type: "" })
-    const handleClear = () => {
-        setFeedback({ message: "", type: "" })
-    }
+
     useEffect(() => {
         const fetchdata = async () => {
             try {
                 const response = await fetch(`https://websolex-admin.vercel.app/api/blogpage/${blogid}`);
                 if (!response.ok) {
-                    setFeedback({
-                        message: `Error fetching : ${response.message}`,
-                        type: "error",
-                    })
+
+                    console.log(response.message)
                 }
                 const data = await response.json();
                 setblogdata(data);
             } catch (error) {
-                setFeedback({
-                    message: `Error fetching : ${error.message}`,
-                    type: "error",
-                })
+                console.log(error.message)
+
             }
         }
         fetchdata();
