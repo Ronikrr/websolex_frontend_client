@@ -54,11 +54,11 @@ const Blog = () => {
                                 <div className="col-md-6 col-xl-4 mb-5" key={data._id} >
                                     <div className="blog_sub p-2">
                                         <div className="blog_images mb-4">
-                                            <img src={data.image} alt="" className='img-fluid box_image rounded-4' />
+                                            <img src={data.image} alt="" className='img-fluid box_image ' />
                                         </div>
                                         <div className="blog_content position-relative">
-                                            <h5 className='fw-bold'>{data.content[0].title }</h5>
-                                            <p>{data.content[0].description} </p>
+                                            <h5 className='fw-bold'>{data.content[index].title}</h5>
+                                            <p>{data.content[index].description} </p>
                                         </div>
                                         <div className="blog_btn mt-4">
                                             <Link to={`/blog/${data._id}`} onClick={handleTabClick} className='text-decoration-none text-light rounded-2'>Read More <MdArrowOutward /></Link>
@@ -68,8 +68,8 @@ const Blog = () => {
                             ))}
                             <div className="col-md-6 col-xl-4 mb-5">
                                 <div className="blog_sub p-2">
-                                    <div className="blog_images mb-4">
-                                        <img src={blog_one} alt="" className='img-fluid rounded-4' />
+                                    <div className="blog_images mb-4 rounded-4 overflow-hidden">
+                                        <img src={blog_one} alt="" className='img-fluid box_image rounded-4' />
                                     </div>
                                     <div className="blog_content position-relative">
                                         <h5 className='fw-bold'>Top 5 IT Trends Transforming Businesses in 2024</h5>
