@@ -58,7 +58,6 @@ const Portfolioview = () => {
                   alt={portfolioData.alt}
                 />
               </div>
-
             </div>
           </div>
         </div>
