@@ -19,6 +19,7 @@ code {
 .data {
   padding: 200px 0px;
 }
+
 @media (min-width:1400px) and (max-width:1530px) {
   .images_data {
     width: 300px;
@@ -52,5 +53,17 @@ code {
 @media (min-width:768px) and (max-width:1920px) {
   .classdata {
     margin-top: -400px;
+  }
+}
+@media (min-width:1500px) and (max-width:1920px) {
+  .review_content_2 {
+    aspect-ratio: 3/2.8;
+  }
+
+  .review_content_2 p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
