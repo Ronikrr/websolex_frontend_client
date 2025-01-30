@@ -169,7 +169,7 @@ const Footer = () => {
                                                     </div>
                                                     <div>
                                                         <span>
-                                                            <Link target='_blank' to={`https://maps.app.goo.gl/NDtSjz3VxaDJzhjx6`} >
+                                                            <Link target='_blank' to={`https://maps.app.goo.gl/JDB2mofwcDgjNEic8`} >
                                                             {number.address}
                                                             </Link>
                                                         </span>

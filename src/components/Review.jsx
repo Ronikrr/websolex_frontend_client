@@ -102,7 +102,7 @@ const Testimonials = () => {
                                             <ul className="d-flex mb-3 ">
                                                 {renderStars(item?.rate)}
                                             </ul>
-                                            <p className="mb-0">{item.description}</p>
+                                            <p className="mb-0 line-clamp ">{item.description}</p>
                                             <div className="d-flex align-items-center mt-5 justify-content-between">
                                                 <div className="testimonials_sub_box1 d-flex align-items-center">
                                                     <div className="image col-4">

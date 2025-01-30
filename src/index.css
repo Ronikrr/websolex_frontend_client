@@ -16,7 +16,41 @@ code {
 }
 
 
-.data{
-  
+.data {
   padding: 200px 0px;
+}
+@media (min-width:1400px) and (max-width:1530px) {
+  .images_data {
+    width: 300px;
+  }
+
+  .card a {
+    width: 300px !important;
+  }
+
+  .card .overlay {
+    width: 300px;
+  }
+}
+
+@media (max-width:1920px) {
+  .images_data {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  /* Limits text to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width:768px) and (max-width:1920px) {
+  .classdata {
+    margin-top: -400px;
+  }
 }
