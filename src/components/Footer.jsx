@@ -423,7 +423,7 @@ const Footer = () => {
                         <div className="col-lg-6 wow fadeInLeft animated">
                             <div className="footer-bottom-content">
                                 <div className="footer-bottom-content-copy">
-                                    <p className='text-center '>Copyright © 2024 Websolex infotech. All Rights Reserved. </p>
+                                    <p className='text-center '>Copyright © 2025 Websolex infotech. All Rights Reserved. </p>
                                 </div>
                             </div>
                         </div>
