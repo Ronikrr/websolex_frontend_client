@@ -366,9 +366,7 @@ const From = () => {
                                 <div className="contact_company_details_box">
                                     <h2 className="fw-bold text-center mb-0 wow animate__animated animate__fadeInDown">Contact Details</h2>
                                 </div>
-
                                 <div className="col-12 d-flex flex-wrap px-0 pt-5">
-
                                     <div className="col-12 col-md-6 ps-0">
                                         <div className="me-0 me-md-3 me-xl-2 me-xxl-4">
                                             <div className="contact_sub_boxx d-xxl-flex col-12 text-center text-xxl-start border rounded-2 mb-4 wow animate__animated animate__fadeInRight">
@@ -422,7 +420,6 @@ const From = () => {
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div className="col-12 d-flex flex-column flex-lg-row mt-5 mt-xl-3 justify-content-between py-5 ps-3 py-sm-4 ps-sm-4 pe-0 align-items-center border-top">
                                     <h6 className="fw-bold mb-4 mb-md-0 font_size wow animate__animated animate__slideInRight">Social Media:</h6>
                                     <ul className="social_main_menu d-flex ps-0 mb-0">
