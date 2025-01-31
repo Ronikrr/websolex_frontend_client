@@ -155,7 +155,7 @@ function MeetOurTeam() {
                         {teamMembers.map((member, index) => (
                             <div
                                 key={index}
-                                className={`col-xl-4 col-lg-4 col-md-6 mb-7 d-flex align-items-stretch wow animate__animated ${index % 2 === 0 ? 'animate__fadeInLeft' : 'animate__fadeInRight classdata'
+                                className={`col-xl-4 col-lg-4 col-md-6 mb-7 d-flex align-items-center wow animate__animated ${index % 2 === 0 ? 'animate__fadeInLeft' : 'animate__fadeInRight classdata'
                                     }`}
                             >
                                 <div className="position-relative card_options mg-10 mx-md-3">

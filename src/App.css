@@ -865,10 +865,7 @@ a.dropdown-item img {
   padding: 150px 0px 100px !important;
 }
 
-/* Default styles for larger screens */
-.card_options {
-  top: 50%;
-}
+
 
 .meet_our_team {
   padding-bottom: 300px !important;
@@ -5373,13 +5370,8 @@ select {
     object-fit: contain;
   }
 
-  .card_options {
-    top: 50%;
-  }
 
-  .meet_our_team {
-    padding-bottom: 300px !important;
-  }
+
 
   .banner_main_menu::after {
     display: block;
@@ -5939,9 +5931,7 @@ select {
     font-size: 48px;
   }
 
-  .meet_our_team {
-    padding-bottom: 400px !important;
-  }
+
 
   .mission_section {
     padding: 180px 0px 100px;

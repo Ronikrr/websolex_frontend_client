@@ -447,7 +447,7 @@ const From = () => {
                                             </Link>
                                         </li>
                                     </ul>
-                                </div>l
+                                </div>
                             </div>
                         </div>
                     </div>
