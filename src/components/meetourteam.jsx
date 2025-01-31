@@ -158,7 +158,7 @@ function MeetOurTeam() {
                                 className={`col-xl-4 col-lg-4 col-md-6 mb-7 d-flex align-items-center wow animate__animated ${index % 2 === 0 ? 'animate__fadeInLeft' : 'animate__fadeInRight classdata'
                                     }`}
                             >
-                                <div className="position-relative card_options mg-10 mx-md-3">
+                                <div className="position-relative card_options mg-10 mx-md-3 w-100 ">
                                     <div className="card">
                                         <div className="card-img-top h-auto">
                                             <img
