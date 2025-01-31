@@ -126,6 +126,7 @@ function MeetOurTeam() {
                 }
                 const data = await response.json();
                 setTeamMembers(data);
+                console.log(data)
             } catch (err) {
                 setFeedback({
                     message: `Error :Failed to fetch team data  ${err.message}`,
@@ -180,7 +181,7 @@ function MeetOurTeam() {
                                                     <FaLinkedinIn />
                                                 </Link>
                                                 <Link
-                                                    to={member.instagram}
+                                                    to={member.insta}
                                                     target="_blank"
                                                     className="icon_links text-bg-light border d-flex align-items-center justify-content-center rounded-2"
                                                     aria-label={`${member.name}'s Instagram`}
