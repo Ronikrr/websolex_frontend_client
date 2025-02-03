@@ -21,7 +21,7 @@
     gtag('js', new Date());
 
     gtag('config', 'G-D3PP2RMF85');
-            document.onkeydown = function (e) {
+      document.onkeydown = function (e) {
       if (event.keyCode == 123) {
         return false;
       }
@@ -37,16 +37,18 @@
       if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
         return false;
       }
-           } 
+    } 
   </script>
-  <script>(function (w, d, s, l, i) {
+  <script>
+      (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
           'gtm.start':
             new Date().getTime(), event: 'gtm.js'
         }); var f = d.getElementsByTagName(s)[0],
           j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
             'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-5MRC5LND');</script>
+      })(window, document, 'script', 'dataLayer', 'GTM-5MRC5LND');
+      </script>
 </head>
 
 <!-- oncontextmenu="return false;" -->
@@ -54,9 +56,10 @@
 <body oncontextmenu="return false;">
   <div id="root"></div>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MRC5LND" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MRC5LND" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
   <script>
     function changeFavicon(iconUrl) {
       const fav = document.getElementById('fav');
@@ -86,7 +89,7 @@
         .then(data => data)
         .catch(error => console.error('Error:', error));
     });
-    
+
   </script>
 
 </body>
