@@ -422,7 +422,7 @@ const PortfolioSection = () => {
                       />
                       <div className="overlay position-absolute col-12 d-flex justify-content-center align-items-center h-100 bg-primary rounded-3">
                         <div className="overlay_content text-center text-light">
-                          <h2 className="pt-lg-3 pt-xxl-5">{image.category}</h2>
+                          <h2 className="pt-lg-3 pt-xxl-5 text-capitalize ">{image.category}</h2>
                         </div>
                       </div>
                       <div className="all_icon position-absolute  d-flex align-items-center justify-content-start gap-3">
