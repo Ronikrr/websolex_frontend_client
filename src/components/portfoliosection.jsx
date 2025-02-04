@@ -19,7 +19,7 @@ const PortfolioSection = () => {
   const handleClear = () => {
     setFeedback({ message: "", type: "" })
   }
-  setDisplayLimit();
+
   // Fetch portfolio data from the API
   useEffect(() => {
     const fetchPortfolios = async () => {
