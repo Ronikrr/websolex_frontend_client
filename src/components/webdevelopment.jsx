@@ -9,6 +9,7 @@ import angular from '../Assets/angular.png'
 import wix from '../Assets/wix.png'
 import webflow from '../Assets/webflow.png'
 import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom'
 
 const webdevelopment = () => {
 
@@ -88,7 +89,7 @@ const webdevelopment = () => {
                                                 <p className="mb-1 fs-14">{c.dis}</p>
                                             </div>
                                             <div className="social d-flex mt-4  justify-content-end">
-                                                <a href="javascript:void(0);"><FaArrowRight className="arrow" /></a>
+                                                <Link><FaArrowRight className="arrow" /></Link>
                                             </div>
                                         </div>
                                     </div>

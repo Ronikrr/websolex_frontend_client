@@ -15,19 +15,19 @@ const StickySection = () => {
     { id: 4, text: "Content 4" },
   ];
 
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const newIndex = Math.floor(scrollPosition / windowHeight);
-
-    if (newIndex < contents.length) {
-      setActiveIndex(newIndex);
-    } else {
-      setActiveIndex(contents.length - 1);
-    }
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const newIndex = Math.floor(scrollPosition / windowHeight);
+
+      if (newIndex < contents.length) {
+        setActiveIndex(newIndex);
+      } else {
+        setActiveIndex(contents.length - 1);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {

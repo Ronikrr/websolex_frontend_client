@@ -3,8 +3,7 @@ import React from 'react'
 const Notfound = () => {
   return (
    
-   <>
-  {/* Hello world */}
+    <>
   
   <svg
     id="errorSVG"

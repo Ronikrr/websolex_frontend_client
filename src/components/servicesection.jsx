@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaDisplay } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import webdevlopment from '../Assets/web devlopment.png'
 import graphic from '../Assets/grafhics.png'

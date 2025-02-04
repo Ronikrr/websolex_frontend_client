@@ -3,7 +3,6 @@ import Blog from '../components/blog'
 
 
 const blogpage = () => {
-
   return (
     <>
     <Blog />
