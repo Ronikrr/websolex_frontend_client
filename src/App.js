@@ -54,10 +54,41 @@ const Layout = ({ children }) => {
   );
 };
 
+
 function App() {
   useEffect(() => {
     const wow = new WOW();
     wow.init(); // Initialize WOW.js
+  }, []);
+  useEffect(() => {
+    // Disable Print Screen
+    document.addEventListener("keydown", function (e) {
+      if (e.metaKey && e.key === "PrintScreen") {
+        alert("Screenshots are disabled!");
+        e.preventDefault();
+      }
+
+      // Disable Developer Tools
+      if (e.ctrlKey && e.key === "u") {
+        alert("View Source is disabled!");
+        e.preventDefault();
+      }
+    });
+
+
+    return () => {
+      document.removeEventListener("keydown", () => { });
+    };
+  }, [])
+  useEffect(() => {
+    // Create an overlay div
+    const overlay = document.createElement("div");
+    overlay.className = "screenshot-blocker";
+    document.body.appendChild(overlay);
+
+    return () => {
+      document.body.removeChild(overlay);
+    };
   }, []);
 
   return (

@@ -67,3 +67,15 @@ code {
     overflow: hidden;
   }
 }
+/* Add this CSS in your global styles */
+.screenshot-blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.01);
+  /* Nearly transparent overlay */
+  pointer-events: none;
+  z-index: 9999;
+}
