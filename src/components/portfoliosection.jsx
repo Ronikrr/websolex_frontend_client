@@ -114,7 +114,7 @@ const PortfolioSection = () => {
             </div>
           </div>
           <div className=" text-center">
-            <Link to={'/portfolio'} onClick={scrollToTop} className="text-capitalize bg-primary text-light  border-0 rounded-2 px-3 py-2 text-white text-decoration-none" >see more</Link>
+            <Link to={'/portfolio'} onClick={scrollToTop} className="text-capitalize bg-primary text-light  border-0 rounded-2 px-4 py-2 text-white text-decoration-none" >see more</Link>
           </div>
         </div>
       </section>
