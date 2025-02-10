@@ -9,68 +9,38 @@ import { Link } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 import { useNavigate } from 'react-router-dom';
 import FeedbackMessage from './feedback';
-
+import { useGetContactDetailsQuery, useGetSocialDetailsQuery } from '../redux/apiSlice'
+import Loader from './loader';
 const Footer = () => {
+    const { data: number, loading: contactloading, error: contacterror } = useGetContactDetailsQuery()
+    const { data: social, loading: socialloading, error: socialerror } = useGetSocialDetailsQuery()
     const navigate = useNavigate()
     const [data, setdata] = useState({ email: "" });
     const handleTabClick = (tab) => {
         window.scrollTo(0, 0);
 
     };
-    const [number, setnumber] = useState('')
-    const [social, setsocial] = useState('')
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
     }
     useEffect(() => {
-        const fetchcontactdata = async () => {
-            try {
-                const res = await fetch('https://websolex-admin.vercel.app/api/contactdetails', {
-                    method: 'GET'
-                });
-                if (!res.ok) {
-                    const errorMessage = await res.text();
-                    setFeedback({
-                        message: `Error fetching : ${errorMessage}`,
-                        type: "error",
-                    })
-                }
-                const data = await res.json();
-                if (Array.isArray(data) && data.length > 0) {
-                    setnumber(data[0]);
-                } else {
-                    setFeedback({
-                        message: `Error:Contact data is empty or invalid format`,
-                        type: "error",
-                    })
-                }
-            } catch (error) {
-                setFeedback({
-                    message: `Error fetching : ${error.message}`,
-                    type: "error",
-                })
-            }
-        };
-        const fetchsocialdata = async () => {
-            try {
-                const res = await fetch('https://websolex-admin.vercel.app/api/socialdetails', {
-                    method: 'GET'
-                })
-                const data = await res.json();
-                if (data && data.length > 0) {
-                    setsocial(data[0]);
-                }
-            } catch (error) {
-                setFeedback({
-                    message: `Error fetching : ${error.message}`,
-                    type: "error",
-                })
-            }
+
+        if (contacterror) {
+            setFeedback({
+                message: `Error fetching : ${contacterror.Message}`,
+                type: "error",
+            })
         }
-        fetchsocialdata()
-        fetchcontactdata()
-    }, [])
+        if (socialerror) {
+            setFeedback({
+                message: `Error fetching : ${socialerror.Message}`,
+                type: "error",
+            })
+        }
+
+
+    }, [contacterror, socialerror])
 
     const onhange = (e) => {
         const { name, value } = e.target;
@@ -79,7 +49,9 @@ const Footer = () => {
             [name]: value
         }));
     }
-
+    if (socialloading && contactloading) {
+        return <Loader />
+    }
 
 
     const EMAIL_KEY_SUBSCRIBR = process.env.EMAIL_KEY_SUBSCRIBR
@@ -145,7 +117,7 @@ const Footer = () => {
                                                     </div>
                                                     <div>
                                                         <span>
-                                                            <Link to={`tel:${number.phoneno}`} alt="">{number.phoneno}</Link>
+                                                            <Link to={`tel:${number?.phoneno}`} alt="">{number?.phoneno}</Link>
                                                         </span><br />
                                                     </div>
                                                 </div>
@@ -157,7 +129,7 @@ const Footer = () => {
                                                     </div>
                                                     <div>
                                                         <span>
-                                                            <Link target='_blank' to={`https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwQZxkVtVqSvHXSTtpJPrVqqmWMgGdgTrFRrkzBcXRNXcKLkkmjKWWbPSmQXnKcMrTdPgbZ`}> {number.email} </Link>
+                                                            <Link target='_blank' to={`https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwQZxkVtVqSvHXSTtpJPrVqqmWMgGdgTrFRrkzBcXRNXcKLkkmjKWWbPSmQXnKcMrTdPgbZ`}> {number?.email} </Link>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -170,7 +142,7 @@ const Footer = () => {
                                                     <div>
                                                         <span>
                                                             <Link target='_blank' to={`https://maps.app.goo.gl/JDB2mofwcDgjNEic8`} >
-                                                            {number.address}
+                                                                {number?.address}
                                                             </Link>
                                                         </span>
                                                     </div>
@@ -269,17 +241,17 @@ const Footer = () => {
                                     <div className="col-lg-6 wow animate__animated animate__fadeInRight">
                                         <ul className="footer-social d-flex flex-row justify-content-center p-0 ps-lg-3 justify-content-lg-end align-items-right float-right mb-0">
                                             <li>
-                                                <Link to={social.facebook} target="_blank">
+                                                <Link to={social?.facebook} target="_blank">
                                                     <LuFacebook />
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to={social.instagram} target="_blank">
+                                                <Link to={social?.instagram} target="_blank">
                                                     <IoLogoInstagram />
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to={social.linkedin} target="_blank">
+                                                <Link to={social?.linkedin} target="_blank">
                                                     <FiLinkedin />
                                                 </Link>
                                             </li>

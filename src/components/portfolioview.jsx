@@ -2,36 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FeedbackMessage from "./feedback";
+import { useGetLastWorkAddByIdQuery } from '../redux/apiSlice'
+import Loader from './loader';
 const Portfolioview = () => {
-  const { portfolioid } = useParams(); // Extract 'portfolioid'
-  const [portfolioData, setportfolioData] = useState([])
+  const { portfolioid } = useParams();
+  const { data: portfolioData, error, loading } = useGetLastWorkAddByIdQuery(portfolioid);
   const [feedback, setFeedback] = useState({ message: "", type: "" })
   const handleClear = () => {
     setFeedback({ message: "", type: "" })
   }
-
   useEffect(() => {
-    const fetchdata = async () => {
-      try {
-        const response = await fetch(`https://websolex-admin.vercel.app/api/lastworkadd/${portfolioid}`);
-        if (!response.ok) {
-          setFeedback({
-            message: `Error :Failed to fetch team data  ${response.message}`,
-            type: "error",
-          })
-        }
-        const data = await response.json();
-        setportfolioData(data);
-      } catch (error) {
-        setFeedback({
-          message: `Error :Failed to fetch team data  ${error.message}`,
-          type: "error",
-        })
-      }
+    if (error) {
+      setFeedback({
+        message: `Error fetching : ${error.Message}`,
+        type: "error",
+      })
     }
-    fetchdata();
-  }, [portfolioid])
-
+  }, [error])
+  if (loading) return <Loader />
 
   if (!portfolioData) {
     return <div>No portfolio found for "{portfolioid}"</div>;

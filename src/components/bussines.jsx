@@ -11,27 +11,24 @@ import insta5 from '../Assets/insta5 1.png';
 import insta7 from '../Assets/insta7.jpg';
 import { IoSearch } from "react-icons/io5";
 import { Link, useParams } from 'react-router-dom';
+import { useGetBlogPostQuery } from '../redux/apiSlice'
+import FeedbackMessage from './feedback';
+import Loader from './loader';
 const Bussines = () => {
     const { blogid } = useParams();
-    const [blogdata, setblogdata] = useState([])
-
+    const { data: blogdata, error, isLoading } = useGetBlogPostQuery(blogid);
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
     useEffect(() => {
-        const fetchdata = async () => {
-            try {
-                const response = await fetch(`https://websolex-admin.vercel.app/api/blogpage/${blogid}`);
-                if (!response.ok) {
-
-                    console.log(response.message)
-                }
-                const data = await response.json();
-                setblogdata(data);
-            } catch (error) {
-                console.log(error.message)
-
-            }
+        if (error) {
+            setFeedback({
+                message: `Error fetching : ${error.Message}`,
+                type: "error",
+            })
         }
-        fetchdata();
-    }, [blogid])
+    }, [error])
     if (!blogdata) {
         return <div>No portfolio found for "{blogid}"</div>;
     }
@@ -39,8 +36,10 @@ const Bussines = () => {
         return <div>No content available</div>;
     }
     const index = 0
+    if (isLoading) return <Loader />
     return (
         <>
+            {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
             <section className='bussines_section '>
                 <div className="container">
                     <div className="row">

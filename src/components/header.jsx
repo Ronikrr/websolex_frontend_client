@@ -7,15 +7,17 @@ import graphic from '../Assets/grafhics.png'
 import UIUX from '../Assets/uiux-icon.png'
 import mobile from '../Assets/mobile.png'
 import Digital from '../Assets/digital_marketing.png'
-
+import { useGetContactDetailsQuery }from '../redux/apiSlice'
+import FeedbackMessage from './feedback';
 const Header = () => {
+    const { data: contactDetails, error } = useGetContactDetailsQuery()
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [activeTab, setActiveTab] = useState('Home');
     const [mouseEnter, setMouseEnter] = useState(false)
-    const [number, setnumber] = useState('');
-
-
-
+  const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const handleClear = () => {
+        setFeedback({ message: "", type: "" })
+    }
     const toggleNavbar = () => {
         setIsCollapsed(!isCollapsed);
     };
@@ -26,27 +28,13 @@ const Header = () => {
         setIsCollapsed(true);
     };
     useEffect(() => {
-        const fetchcontactdata = async () => {
-            try {
-                const res = await fetch('https://websolex-admin.vercel.app/api/contactdetails', {
-                    method: 'GET'
-                });
-                if (!res.ok) {
-                    const errorMessage = await res.text(); // Get the error message from the response
-                    throw new Error(`HTTP error! status: ${res.status}, message: ${errorMessage}`);
-                }
-                const data = await res.json();
-                if (Array.isArray(data) && data.length > 0) {
-                    setnumber(data[0].phoneno);
-                } else {
-                    console.log("Contact data is empty or invalid format.");
-                }
-            } catch (error) {
-                console.error("Error fetching contact data:", error.message);
-            }
-        };
-        fetchcontactdata()
-    }, [])
+        if (error) { 
+            setFeedback({
+                message: `Error : ${error.message}`,
+                type: "error",
+            })
+        }
+    }, [error])
 
     const ServiceTab = [
         {
@@ -162,6 +150,7 @@ const Header = () => {
     return (
         <>
             <header>
+                {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
                 <div className="header d-none d-lg-block position-fixed wow animate__animated animate__fadeInDown">
                     <div className="container">
                         <div className="row">
@@ -229,8 +218,8 @@ const Header = () => {
                                         </ul>
                                     </div>
                                     <form className="d-none d-lg-flex justify-content-center" role="search">
-                                        <Link to={`tel:${number}`} alt="Enquire Now" className="nav-link bg-primary text-light  border-0 rounded-2">
-                                            <FaPhone className='pe-2 bell' />{number}
+                                        <Link to={`tel:${contactDetails?.phoneno}`} alt="Enquire Now" className="nav-link bg-primary text-light  border-0 rounded-2">
+                                            <FaPhone className='pe-2 bell' />{contactDetails?.phoneno}
                                         </Link>
                                     </form>
                                 </div>
@@ -290,9 +279,10 @@ const Header = () => {
                                         </ul>
                                         <form className="d-flex justify-content-center" role="search">
                                             <Link
-                                                to="tel:8200845977"
+                                                to={`tel:${contactDetails?.phoneno}`}
                                                 className="bg-primary text-light  border-0 rounded-2  text-decoration-none"
-                                            ><FaPhone className=' bell me-2' />+91 8200845977
+                                            ><FaPhone className=' bell me-2' />
+                                                {contactDetails?.phoneno}
                                             </Link>
                                         </form>
                                     </div>

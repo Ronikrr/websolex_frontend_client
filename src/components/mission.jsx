@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import lineimg from '../Assets/line.png';
 import FeedbackMessage from './feedback';
+import { useGetProjectQuery } from '../redux/apiSlice'
+import Loader from './loader';
 const missionData = {
     'mission': [
         { id: 1, name: 'Mission', discription: 'At Websolex Infotech, our mission is to deliver exceptional digital solutions that drive business growth and enhance user experiences. We are committed to providing top-quality website design, development, application development, UI/UX design, graphics design, and digital marketing services. Our goal is to help businesses navigate the digital landscape with innovative, reliable, and tailored solutions that meet their unique needs. We strive to exceed client expectations through our dedication to quality, creativity, and customer satisfaction, all while fostering a collaborative and inclusive work environment.' },
-        
+
         { id: 2, name: 'Vision', discription: 'To be a global leader in digital solutions, empowering businesses with innovative and cutting-edge web and application technologies. At Websolex Infotech, we envision a world where every business has the digital tools to achieve unprecedented growth and success.' }
     ],
     'image': [
@@ -13,32 +15,24 @@ const missionData = {
 };
 
 function Mission() {
-     const [project, setproject] = useState('');
+    const { data: project, error, isLoading } = useGetProjectQuery();
+
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
     }
-    
-        useEffect(() => {
-            const fetchprojectdata = async () => {
-                const res = await fetch('https://websolex-admin.vercel.app/api/project',
-                    {
-                        method:'GET'
-                    }
-                )
-                if (!res.ok) {
-                    setFeedback({
-                        message: `Error :Failed to fetch team data  ${res.message}`,
-                        type: "error",
-                    })
-                }
-                const data = await res.json();
-                if (data && data.length > 0 ) {
-                    setproject(data[0])
-                }
-            }
-            fetchprojectdata()
-        })
+
+    useEffect(() => {
+        if (error) {
+            setFeedback({
+                message: `Error :Failed to fetch team data  ${error.message}`,
+                type: "error",
+            })
+        }
+    }, [error])
+    if (isLoading) {
+        return <Loader />
+    }
     return (
         <>
             {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
@@ -88,13 +82,13 @@ function Mission() {
                                             </div>
                                             <div className="line_box line_2 position-absolute text-start">
                                                 <div className="counts">
-                                                    <h1 className="m-0 fw-bold" >{project.totalClients}+</h1>
+                                                    <h1 className="m-0 fw-bold" >{project?.totalClients}+</h1>
                                                 </div>
                                                 <p>Client</p>
                                             </div>
                                             <div className="line_box line_3 position-absolute text-start">
                                                 <div className="counts">
-                                                    <h1 className="m-0 fw-bold" >{project.completedProjects}+</h1>
+                                                    <h1 className="m-0 fw-bold" >{project?.completedProjects}+</h1>
                                                 </div>
                                                 <p>Completed Project</p>
                                             </div>

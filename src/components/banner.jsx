@@ -9,55 +9,35 @@ import { FaStar } from "react-icons/fa";
 import report_graf from '../Assets/sale-report-removebg-preview.png'
 import graf2 from '../Assets/garf.png'
 import { convertToK } from './convertto';
+import { useGetProjectQuery, useGetSetStaticQuery } from '../redux/apiSlice'
 import FeedbackMessage from './feedback';
+import Loader from './loader';
 function Banner() {
-    const [project, setproject] = useState([]);
-    const [statics, setstatic] = useState([]);
-
+    const { data: project, error: projectError, isLoading: projectloading } = useGetProjectQuery();
+    const { data: statics, error: staticError, isLoading: staticLoading } = useGetSetStaticQuery();
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
     }
 
     useEffect(() => {
-        const fetchprojectdata = async () => {
-            const res = await fetch('https://websolex-admin.vercel.app/api/project',
-                { method: 'GET' }
-            )
-            if (!res.ok) {
-                setFeedback({
-                    message: `Error : ${res.message}`,
-                    type: "error",
-                })
-            }
-            const data = await res.json();
-            if (data && data.length > 0) {
-                setproject(data[0].completedProjects)
-            }
-
+        if (projectError) {
+            setFeedback({
+                message: `Error : ${projectError.message}`,
+                type: "error",
+            })
         }
-        fetchprojectdata()
-        const fetchprojectstatic = async () => {
-            const res = await fetch('https://websolex-admin.vercel.app/api/setstatic',
-                { method: 'GET' }
-            )
-            if (!res.ok) {
-                setFeedback({
-                    message: `Error : ${res.message}`,
-                    type: "error",
-                })
-            } 
-            const data = await res.json();
-            if (data && data.length > 0) {
-                setstatic(data[0])
-            }
-
+        if (staticError) {
+            setFeedback({
+                message: `Error : ${staticError.message}`,
+                type: "error",
+            })
         }
-        fetchprojectdata()
-        fetchprojectstatic()
-    }, [])
-    
+    }, [projectError, staticError])
 
+    if (projectloading && staticLoading) {
+        return <Loader />
+    }
     const handleTabClick = (tab) => {
         window.scrollTo(0, 0);
     };
@@ -144,7 +124,7 @@ function Banner() {
                                     <div className="view_sec d-flex flex-wrap align-items-center justify-content-between  col-10 col-md-6 col-lg-9 col-xl-7 col-xxl-6 position-absolute bg-light p-3  rounded-4">
                                         <div className=" col-6 view_content text-center text-md-start">
                                             <span className='fw-semibold'>Total Project</span>
-                                            <h2 className='mb-0'>{project}+</h2>
+                                            <h2 className='mb-0'>{project?.completedProjects}+</h2>
                                         </div>
                                         <div className=" col-6 ">
                                             <img src={graf2} alt="" className='col-9' />

@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { FaRegStar, FaStar } from "react-icons/fa";
-import img4 from '../Assets/quotation-mark.png'; // Default quotation image
+import img4 from '../Assets/quotation-mark.png';
 import FeedbackMessage from './feedback';
+import { useGetClientRateQuery } from '../redux/apiSlice'
+import Loader from './loader';
 const Testimonials = () => {
-    const [testimonials, setTestimonials] = useState([]);
+    const { data: testimonials, loading, error } = useGetClientRateQuery()
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
@@ -44,26 +46,15 @@ const Testimonials = () => {
     };
 
     useEffect(() => {
-        const fetchTestimonials = async () => {
-            try {
-                const res = await fetch(`https://websolex-admin.vercel.app/api/clientrate`);
-                if (!res.ok) {
-                    setFeedback({
-                        message: `Error :Failed to fetch team data  ${res.message}`,
-                        type: "error",
-                    })
-                }
-                const data = await res.json();
-                setTestimonials(data);
-            } catch (err) {
-                setFeedback({
-                    message: `Error :Failed to fetch team data  ${err.message}`,
-                    type: "error",
-                })
-            } 
-        };
-        fetchTestimonials();
-    }, []);
+
+        if (error) {
+            setFeedback({
+                message: `Error :Failed to fetch team data  ${error.message}`,
+                type: "error",
+            })
+        }
+
+    }, [error]);
     const renderStars = (rate) => {
         const totalStars = 5;
         let stars = [];
@@ -80,7 +71,9 @@ const Testimonials = () => {
 
         return stars;
     };
-
+    if (loading) {
+        return <Loader />
+    }
 
 
     return (

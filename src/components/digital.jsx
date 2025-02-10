@@ -1,11 +1,11 @@
 import React from 'react';
-import logodesign from '../Assets/logo-design.png'
 import { FaArrowRight } from 'react-icons/fa';
 import seo from '../Assets/seo.png'
 import click_through from '../Assets/click-through-rate.png'
 import marketing from '../Assets/marketing (1).png'
 import bullhorn from '../Assets/bullhorn.png'
 import digital_marketing from '../Assets/digital-marketing (1).png'
+import { Link } from 'react-router-dom';
 
 function digital() {
     const cardtab = [
@@ -58,7 +58,9 @@ function digital() {
                                             <p className="mb-1 fs-14">{c.dis}</p>
                                         </div>
                                         <div className="social d-flex  justify-content-end align-items-end">
-                                            <a href="javascript:void(0);"><FaArrowRight className="arrow" /></a>
+                                            <Link>
+                                                <FaArrowRight className="arrow" />
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

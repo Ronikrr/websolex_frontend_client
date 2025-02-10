@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
 import WOW from "wow.js";
 import "animate.css";
-
 import "./App.css";
 import Header from "./components/header";
 import Footer from "./components/Footer";
@@ -13,8 +11,8 @@ import Home from "./pages/home";
 import Portfolio from "./pages/portfolio";
 import Portfolioview from "./components/portfolioview";
 import Service from "./pages/service";
-import Contact from "./pages/contact"; // Ensure this matches the exported name
-import Company from "./pages/company"; // Ensure this matches the exported name
+import Contact from "./pages/contact"; 
+import Company from "./pages/company";
 import Webdevelopment from "./components/webdevelopment";
 import Graphic from "./components/graphic";
 import Uiux from "./components/design";
@@ -22,13 +20,11 @@ import MobileApp from "./components/mobileapps";
 import Digital from "./components/digital";
 import Blog from "./pages/blogpage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import Bussines from './components/bussines';
 import Businesspage from "./pages/businesspage";
 import Career from "./pages/career";
-// import { useEffect } from 'react'
 import Thankyou from "./components/thankyou";
 import Notfound from "./pages/notfound";
-import { BeatLoader } from "react-spinners";
+
 import PageTitle from "./components/PageTitle";
 import Loader from "./components/loader";
 const Layout = ({ children }) => {
@@ -93,7 +89,9 @@ function App() {
 
   return (
     <Router>
-
+     
+    
+     
       <Routes>
         <Route path="/" element={
           <Layout>
@@ -179,6 +177,7 @@ function App() {
 
 
       </Routes>
+   
 
     </Router>
   )

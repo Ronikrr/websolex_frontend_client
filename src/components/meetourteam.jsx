@@ -3,35 +3,26 @@ import { Link } from 'react-router-dom';
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { PiInstagramLogoFill } from "react-icons/pi";
 import FeedbackMessage from './feedback';
+import { useGetTeamQuery } from '../redux/apiSlice'
+import Loader from './loader';
 function MeetOurTeam() {
-    const [teamMembers, setTeamMembers] = useState([]);
+    const { data: teamMembers, error, isLoading } = useGetTeamQuery();
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
     }
     useEffect(() => {
-        const fetchTeamData = async () => {
-            try {
-                const response = await fetch('https://websolex-admin.vercel.app/api/teampage');
-                if (!response.ok) {
-                    setFeedback({
-                        message: `Error :Failed to fetch team data  ${response.message}`,
-                        type: "error",
-                    })
-                }
-                const data = await response.json();
-                setTeamMembers(data);
-                console.log(data)
-            } catch (err) {
-                setFeedback({
-                    message: `Error :Failed to fetch team data  ${err.message}`,
-                    type: "error",
-                })
-            } 
-        };
+        if (error) {
+            setFeedback({
+                message: `Error :Failed to fetch team data  ${error.message}`,
+                type: "error",
+            })
+        }
+    }, [error]);
 
-        fetchTeamData();
-    }, []);
+    if (isLoading) {
+        return <Loader />
+    }
 
     return (
         <>
@@ -48,7 +39,7 @@ function MeetOurTeam() {
                         </div>
                     </div>
                     <div className="row justify-content-center team_class w-75">
-                        {teamMembers.map((member, index) => (
+                        {teamMembers?.map((member, index) => (
                             <div
                                 key={index}
                                 className={`col-xl-4 col-lg-4 col-md-6 mb-7 d-flex align-items-center wow animate__animated ${index % 2 === 0 ? 'animate__fadeInLeft' : 'animate__fadeInRight '
@@ -58,36 +49,36 @@ function MeetOurTeam() {
                                     <div className="card">
                                         <div className="card-img-top h-auto">
                                             <img
-                                                src={member.image}
-                                                alt={`${member.name}'s Profile`}
+                                                src={member?.image}
+                                                alt={`${member?.name}'s Profile`}
                                                 className="img-fluid profile_image"
                                             />
                                         </div>
                                         <div className="card-body px-lg-0 p-md-4 text-center">
-                                            <h4 className="mb-1 text-capitalize ">{member.name}</h4>
-                                            <p className="mb-1 fs-14 text-capitalize">{member.post}</p>
+                                            <h4 className="mb-1 text-capitalize ">{member?.name}</h4>
+                                            <p className="mb-1 fs-14 text-capitalize">{member?.post}</p>
                                             <div className="social d-flex mt-2 justify-content-center gap-1">
                                                 <Link
-                                                    to={member.linkedin}
+                                                    to={member?.linkedin}
                                                     target="_blank"
                                                     className="icon_links text-bg-light border d-flex align-items-center justify-content-center rounded-2"
-                                                    aria-label={`${member.name}'s LinkedIn`}
+                                                    aria-label={`${member?.name}'s LinkedIn`}
                                                 >
                                                     <FaLinkedinIn />
                                                 </Link>
                                                 <Link
-                                                    to={member.insta}
+                                                    to={member?.insta}
                                                     target="_blank"
                                                     className="icon_links text-bg-light border d-flex align-items-center justify-content-center rounded-2"
-                                                    aria-label={`${member.name}'s Instagram`}
+                                                    aria-label={`${member?.name}'s Instagram`}
                                                 >
                                                     <PiInstagramLogoFill />
                                                 </Link>
                                                 <Link
-                                                    to={member.facebook}
+                                                    to={member?.facebook}
                                                     target="_blank"
                                                     className="icon_links text-bg-light border d-flex align-items-center justify-content-center rounded-2"
-                                                    aria-label={`${member.name}'s Facebook`}
+                                                    aria-label={`${member?.name}'s Facebook`}
                                                 >
                                                     <FaFacebookF />
                                                 </Link>
