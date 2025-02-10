@@ -33,7 +33,7 @@ const StickySection = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [contents]);
 
   return (
     <div ref={ref} className={`sticky-section ${isVisible ? "sticky" : ""}`}>
