@@ -27,7 +27,7 @@ function Clientside() {
                 </div>
                 <div className="clients col-12 text-center mb-md-3">
                     <div className="col-12 d-flex flex-wrap justify-content-center">
-                        {logos?.slice(0, 4).map((logo, index) => (
+                        {logos?.slice(0, 4)?.map((logo, index) => (
                             <div key={index} className="box col-md-6 col-xl-3">
                                 <div className="box_body m-2 rounded-1 border-bottom">
                                     <img
@@ -40,7 +40,7 @@ function Clientside() {
                         ))}
                     </div>
                     <div className="col-12 d-flex flex-wrap justify-content-center">
-                        {logos?.slice(4, 7).map((logo, index) => (
+                        {logos?.slice(4, 7)?.map((logo, index) => (
                             <div key={index} className="box col-md-6 col-xl-3">
                                 <div className="box_body m-2 rounded-1 border-bottom">
                                     <img
@@ -53,7 +53,7 @@ function Clientside() {
                         ))}
                     </div>
                     <div className="col-12 d-flex flex-wrap justify-content-center">
-                        {logos?.slice(7, 9).map((logo, index) => (
+                        {logos?.slice(7, 9)?.map((logo, index) => (
                             <div key={index} className="box col-md-6 col-xl-3">
                                 <div className="box_body m-2 rounded-1 border-bottom">
                                     <img

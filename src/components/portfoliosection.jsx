@@ -19,7 +19,7 @@ const PortfolioSection = () => {
   const handleClear = () => {
     setFeedback({ message: "", type: "" })
   }
-  const categories = [...new Set(portfolios.map((item) => item.category))]
+  const categories = [...new Set(portfolios?.map((item) => item.category))]
 
   useEffect(() => {
     if (error) {
@@ -55,7 +55,7 @@ const PortfolioSection = () => {
             </div>
           </div>
           <ul className="nav nav-tabs justify-content-lg-center pt-3 pt-lg-4 border-0">
-            {categories.map((category) => (
+            {categories?.map((category) => (
               <li
                 className="nav-item px-1 px-lg-3 mb-1 mb-lg-0 wow animate__animated animate__fadeInUp"
                 key={category}

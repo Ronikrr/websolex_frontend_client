@@ -19,7 +19,7 @@ const PortfolioSection = () => {
   const handleClear = () => {
     setFeedback({ message: "", type: "" })
   }
-  const categories = [...new Set(portfolios.map((item) => item.category))]
+  const categories = [...new Set(portfolios?.map((item) => item.category))]
 
   // Fetch portfolio data from the API
   useEffect(() => {
@@ -55,7 +55,7 @@ const PortfolioSection = () => {
           </div>
         </div>
         <ul className="nav nav-tabs justify-content-lg-center pt-3 pt-lg-4 border-0">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <li
               className="nav-item px-1 px-lg-3 mb-1 mb-lg-0 wow animate__animated animate__fadeInUp"
               key={category}
@@ -72,7 +72,7 @@ const PortfolioSection = () => {
         <div className="tab-content">
           <div className="portfolio-tab-content">
             <div className="row">
-              {filteredPortfolios.map((image) => (
+              {filteredPortfolios?.map((image) => (
                 <div
                   className="col-6 col-md-3 mb-4 d-flex images_data justify-content-center justify-content-md-start wow animate__animated animate__fadeInUp"
                   key={image?.id}

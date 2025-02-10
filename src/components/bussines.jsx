@@ -54,12 +54,12 @@ const Bussines = () => {
                                         <p className='ps-2 pe-3 mb-0'>Admin</p>
                                         <li>June 24, 2024</li>
                                     </div>
-                                    <h2 className='fw-bold'>{blogdata.content[index].title}</h2>
-                                    <p> {blogdata.content[index].description} </p>
-                                    {blogdata.content.map((data, index) => (
+                                    <h2 className='fw-bold'>{blogdata?.content[index].title}</h2>
+                                    <p> {blogdata?.content[index]?.description} </p>
+                                    {blogdata.content?.map((data, index) => (
                                         <div className="bussines_sub_box mt-4">
-                                            <h3 className='fw-bold'>{index + 1}. {data.title} </h3>
-                                            <h3 className='fw-normal'> {data.subtitle} </h3>
+                                            <h3 className='fw-bold'>{index + 1}. {data?.title} </h3>
+                                            <h3 className='fw-normal'> {data?.subtitle} </h3>
 
                                             <p>{data.description}</p>
                                         </div>

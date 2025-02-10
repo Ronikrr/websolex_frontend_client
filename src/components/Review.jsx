@@ -9,6 +9,7 @@ import { useGetClientRateQuery } from '../redux/apiSlice'
 import Loader from './loader';
 const Testimonials = () => {
     const { data: testimonials, loading, error } = useGetClientRateQuery()
+    console.log(testimonials)
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
@@ -88,7 +89,7 @@ const Testimonials = () => {
                             </h1>
                         </div>
                         <Slider {...settings}>
-                            {testimonials.map((item, index) => (
+                            {testimonials?.map((item, index) => (
                                 <div key={index} className="item">
                                     <div className="review_sub_box d-block d-md-flex rounded-2 m-2 col-11 ">
                                         <div className="review_content_2 rounded-2 bg-light p-4 wow animate__animated animate__fadeInUp col-12 ">
@@ -100,14 +101,14 @@ const Testimonials = () => {
                                                 <div className="testimonials_sub_box1 d-flex align-items-center">
                                                     <div className="image col-4">
                                                         <img
-                                                            src={item.image || img4} // Fallback to a default image
-                                                            alt={item.name}
+                                                            src={item?.image || img4} // Fallback to a default image
+                                                            alt={item?.name}
                                                             className="testimonial_img "
                                                         />
                                                     </div>
                                                     <div className="content col-9 ps-2">
-                                                        <h5 className="mb-2">{item.name}</h5>
-                                                        <p className="p-0">{item.business}</p>
+                                                        <h5 className="mb-2">{item?.name}</h5>
+                                                        <p className="p-0">{item?.business}</p>
                                                     </div>
                                                 </div>
                                                 <div className="testimonials_sub_box2">
