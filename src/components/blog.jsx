@@ -16,15 +16,15 @@ const Blog = () => {
                 message: `Error fetching : ${error.Message}`,
                 type: "error",
             })
-       }
-            
+        }
+
     }, [error])
     const handleTabClick = () => {
         window.scrollTo(0, 0);
     };
     if (loading) {
-    return <Loader/>
-}
+        return <div className='loader' ><Loader /></div>
+    }
 
 
     return (

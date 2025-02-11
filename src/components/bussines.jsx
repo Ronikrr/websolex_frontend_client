@@ -36,7 +36,7 @@ const Bussines = () => {
         return <div>No content available</div>;
     }
     const index = 0
-    if (isLoading) return <Loader />
+    if (isLoading) return <div className='loader' ><Loader /></div>
     return (
         <>
             {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}

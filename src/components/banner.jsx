@@ -36,7 +36,7 @@ function Banner() {
     }, [projectError, staticError])
 
     if (projectloading && staticLoading) {
-        return <Loader />
+        return <div className='loader' ><Loader /></div>
     }
     const handleTabClick = (tab) => {
         window.scrollTo(0, 0);
