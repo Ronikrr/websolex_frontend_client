@@ -61,7 +61,7 @@ export default function Clientside() {
                                     <div className="box_body m-2 rounded-1 border-bottom">
                                         <img
                                             src={logo?.image || "/placeholder.svg"}
-                                            className="img-fluid image_shadow wow animate__animated animate__fadeIn"
+                                            className="img-fluid w-75 image_shadow wow animate__animated animate__fadeIn"
                                             alt={logo?.altText || "Client Logo"}
                                         />
                                     </div>
