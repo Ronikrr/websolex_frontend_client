@@ -54,9 +54,6 @@ const Footer = () => {
     }
 
 
-    const EMAIL_KEY_SUBSCRIBR = process.env.EMAIL_KEY_SUBSCRIBR
-    const EMAIL_TEMPLATE_SUBSCRIBR = process.env.EMAIL_TEMPLATE_SUBSCRIBR
-    const EMAIL_APIKEY_SUBSCRIBR = process.env.EMAIL_APIKEY_SUBSCRIBR
     const onubmit = async (e) => {
         e.preventDefault();
         const emailParams = {

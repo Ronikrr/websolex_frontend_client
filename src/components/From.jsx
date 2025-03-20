@@ -103,9 +103,6 @@ const onChange = (e) => {
         setotherinput(false);
     }
 };
-const EMAIL_KEY_CONTACT = process.env.EMAIL_KEY_CONTACT
-const EMAIL_TEMPLATE_CONTACT = process.env.EMAIL_TEMPLATE_CONTACT
-const EMAIL_APIKEY_CONTACT = process.env.EMAIL_APIKEY_CONTACT
 
 const sendEmail = (emailParams) => {
     return EmailJS.send('service_soybehv', 'template_73gw0e4', emailParams, 'yC07B7kWN5O46D558')
