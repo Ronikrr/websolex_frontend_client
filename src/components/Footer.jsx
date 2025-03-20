@@ -62,7 +62,7 @@ const Footer = () => {
         const emailParams = {
             email: data.email,
         }
-        emailjs.send(EMAIL_KEY_SUBSCRIBR, EMAIL_TEMPLATE_SUBSCRIBR, emailParams, EMAIL_APIKEY_SUBSCRIBR)
+        emailjs.send("service_csia6iy", 'template_confirmation', emailParams, "NuQv9XskxV05oXLmu")
             .then(async (response) => {
                 try {
                     // Call your API to save the email to the server (backend)
@@ -96,12 +96,12 @@ const Footer = () => {
     return (
         <>
             {feedback.message && <FeedbackMessage message={feedback.message} type={feedback.type} onClear={handleClear} />}
-            <section className="footer-area pt-50 pt-100 d-none d-lg-block">
+            <section className="d-lg-block d-none footer-area pt-100 pt-50">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 d-flex flex-wrap ">
-                            <div className="col-lg-4 footer-cms wow animate__animated animate__fadeInUp">
-                                <div className="single-footer-widget text-md-left footer-left wow fadeInLeft animated title">
+                        <div className="col-12 d-flex flex-wrap">
+                            <div className="col-lg-4 animate__animated animate__fadeInUp footer-cms wow">
+                                <div className="text-md-left animated fadeInLeft footer-left single-footer-widget title wow">
                                     <div className="footer-toggle">
                                         <div className="footer-logo-main-black mb-3">
                                             <Link to="/" onClick={handleTabClick}>
@@ -113,7 +113,7 @@ const Footer = () => {
                                             <li className='pt-3'>
                                                 <div className="footer-info-contact">
                                                     <div className="footer-contact-heading">
-                                                        <p className='mb-0 fw-bold'>Phone :-</p>
+                                                        <p className='fw-bold mb-0'>Phone :-</p>
                                                     </div>
                                                     <div>
                                                         <span>
@@ -125,7 +125,7 @@ const Footer = () => {
                                             <li className='pt-3'>
                                                 <div className="footer-info-email">
                                                     <div className="footer-contact-heading">
-                                                        <p className='mb-0 fw-bold'>Email :-</p>
+                                                        <p className='fw-bold mb-0'>Email :-</p>
                                                     </div>
                                                     <div>
                                                         <span>
@@ -137,7 +137,7 @@ const Footer = () => {
                                             <li className='pt-3'>
                                                 <div className="footer-info-address">
                                                     <div className="footer-contact-heading">
-                                                        <p className='mb-0 fw-bold'>Address :-</p>
+                                                        <p className='fw-bold mb-0'>Address :-</p>
                                                     </div>
                                                     <div>
                                                         <span>
@@ -152,13 +152,13 @@ const Footer = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-2 footer-cms wow animate__animated animate__fadeInUp">
-                                <div className="single-footer-widget text-md-left wow fadeInDown animated">
+                            <div className="col-lg-2 animate__animated animate__fadeInUp footer-cms wow">
+                                <div className="text-md-left animated fadeInDown single-footer-widget wow">
                                     <div className="single-title-wrapper title">
                                         <div className="title-footer">
                                             <h3 className="footer-block__heading mb-4">Pages</h3>
                                         </div>
-                                        <ul className="footer-quick-links pt-10 footer-toggle ps-0">
+                                        <ul className="footer-quick-links footer-toggle ps-0 pt-10">
                                             <li className='mb-3'>
                                                 <Link to="/portfolio" onClick={handleTabClick} className='px-0'>Portfolio</Link>
                                             </li>
@@ -178,13 +178,13 @@ const Footer = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-3 wow animate__animated animate__fadeInUp">
-                                <div className="single-footer-widget text-md-left wow fadeInUp animated">
+                            <div className="col-lg-3 animate__animated animate__fadeInUp wow">
+                                <div className="text-md-left animated fadeInUp single-footer-widget wow">
                                     <div className="single-title-wrapper title">
                                         <div className="title-footer">
                                             <h3 className="footer-block__heading mb-4">Services</h3>
                                         </div>
-                                        <ul className="footer-quick-links pt-10 footer-toggle ps-0">
+                                        <ul className="footer-quick-links footer-toggle ps-0 pt-10">
                                             <li className='mb-3'>
                                                 <Link to="#" className='px-0'>Web Development</Link>
                                             </li>
@@ -201,8 +201,8 @@ const Footer = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-3 wow animate__animated animate__fadeInUp">
-                                <div className="single-footer-widget d-flex flex-column text-md-left wow fadeInRight animated">
+                            <div className="col-lg-3 animate__animated animate__fadeInUp wow">
+                                <div className="d-flex flex-column text-md-left animated fadeInRight single-footer-widget wow">
                                     <div className="single-title-wrapper title">
                                         <div className="title-footer">
                                             <h3 className="footer-block__heading mb-4">Subscribe</h3>
@@ -219,7 +219,7 @@ const Footer = () => {
                                                     onChange={onhange}
                                                     required
                                                 />
-                                                <button className="mil-button mil-accent-bg mil-fw" type="submit">
+                                                <button className="mil-accent-bg mil-button mil-fw" type="submit">
                                                     <span className="text-light fw-normal">Subscribe</span>
                                                 </button>
                                             </form>
@@ -228,18 +228,18 @@ const Footer = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="footer-bottom py-3 border-top">
+                        <div className="border-top footer-bottom py-3">
                             <div className="containerr">
                                 <div className="row align-items-center">
-                                    <div className="col-lg-6 wow animate__animated animate__fadeInLeft">
+                                    <div className="col-lg-6 animate__animated animate__fadeInLeft wow">
                                         <div className="footer-bottom-content">
                                             <div className="footer-bottom-content-copy">
                                                 <p className='mb-0'>Copyright © 2024 Websolex Infotech. All Rights Reserved.</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-6 wow animate__animated animate__fadeInRight">
-                                        <ul className="footer-social d-flex flex-row justify-content-center p-0 ps-lg-3 justify-content-lg-end align-items-right float-right mb-0">
+                                    <div className="col-lg-6 animate__animated animate__fadeInRight wow">
+                                        <ul className="d-flex flex-row align-items-right float-right justify-content-center justify-content-lg-end p-0 footer-social mb-0 ps-lg-3">
                                             <li>
                                                 <Link to={social?.facebook} target="_blank">
                                                     <LuFacebook />
@@ -268,10 +268,10 @@ const Footer = () => {
                     </div>
                 </div>
             </section>
-            <section className='footer-area d-block d-lg-none'>
+            <section className='d-block d-lg-none footer-area'>
                 <div className="container">
                     <div className="row justify-content-center">
-                        <Accordion defaultActiveKey="0" className='mb-5 bg-transparent px-0'>
+                        <Accordion defaultActiveKey="0" className='bg-transparent mb-5 px-0'>
                             <Accordion.Item eventKey="0" className='border-0'>
                                 <div className="title-footer">
                                     <Accordion.Header className="footer-block__heading fw-bold">Contact</Accordion.Header>
@@ -280,7 +280,7 @@ const Footer = () => {
                                     <div className="footer-toggle">
                                         <div className="footer-logo-main-black mb-3">
                                             <Link to="index.html">
-                                                <img src={logo} alt="Logicgo-Logo" className='img-fluid col-4' />
+                                                <img src={logo} alt="Logicgo-Logo" className='col-4 img-fluid' />
                                             </Link>
                                         </div>
                                         <p>Your Ideas, Our Innovation</p>
@@ -288,7 +288,7 @@ const Footer = () => {
                                             <li className='pt-3'>
                                                 <div className="footer-info-contact">
                                                     <div className="footer-contact-heading">
-                                                        <p className='mb-0 fw-bold'>Phone :-</p>
+                                                        <p className='fw-bold mb-0'>Phone :-</p>
                                                     </div>
                                                     <div>
                                                         <span>
@@ -299,7 +299,7 @@ const Footer = () => {
                                             <li className='pt-3'>
                                                 <div className="footer-info-email">
                                                     <div className="footer-contact-heading">
-                                                        <p className='mb-0 fw-bold'>Email :-</p>
+                                                        <p className='fw-bold mb-0'>Email :-</p>
                                                     </div>
                                                     <div>
                                                         <span>
@@ -312,7 +312,7 @@ const Footer = () => {
                                             <li className='pt-3'>
                                                 <div className="footer-info-address">
                                                     <div className="footer-contact-heading">
-                                                        <p className='mb-0 fw-bold'>Address :-</p>
+                                                        <p className='fw-bold mb-0'>Address :-</p>
                                                     </div>
                                                     <div>
                                                         <span> A-103 IT Park Mota Varachha Road Surat Gujarat</span>
@@ -329,21 +329,21 @@ const Footer = () => {
                                 </div>
                                 <Accordion.Body>
                                     <div className="single-title-wrapper title">
-                                        <ul className="footer-quick-links pt-10 ps-0">
+                                        <ul className="footer-quick-links ps-0 pt-10">
                                             <li className='mb-3'>
-                                                <Link to="/portfolio" onClick={handleTabClick} className='text-decoration-none text-black'>Portfolio</Link>
+                                                <Link to="/portfolio" onClick={handleTabClick} className='text-black text-decoration-none'>Portfolio</Link>
                                             </li>
                                             <li className='mb-3'>
-                                                <Link to="/Career" onClick={handleTabClick} className='text-decoration-none text-black'>Career</Link>
+                                                <Link to="/Career" onClick={handleTabClick} className='text-black text-decoration-none'>Career</Link>
                                             </li>
                                             <li className='mb-3'>
-                                                <Link to="/company" onClick={handleTabClick} className='text-decoration-none text-black'>Company</Link>
+                                                <Link to="/company" onClick={handleTabClick} className='text-black text-decoration-none'>Company</Link>
                                             </li>
                                             <li className='mb-3'>
-                                                <Link to="/blog" onClick={handleTabClick} className='text-decoration-none text-black'>Blog</Link>
+                                                <Link to="/blog" onClick={handleTabClick} className='text-black text-decoration-none'>Blog</Link>
                                             </li>
                                             <li className='mb-3'>
-                                                <Link to="/contact" onClick={handleTabClick} className='text-decoration-none text-black'>Contact</Link>
+                                                <Link to="/contact" onClick={handleTabClick} className='text-black text-decoration-none'>Contact</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -353,18 +353,18 @@ const Footer = () => {
                                 <Accordion.Header className="footer-block__heading fw-bold">Services</Accordion.Header>
                                 <Accordion.Body>
                                     <div className="single-title-wrapper title">
-                                        <ul className="footer-quick-links pt-10  ps-0">
+                                        <ul className="footer-quick-links ps-0 pt-10">
                                             <li className='mb-3'>
-                                                <Link to="#" onClick={handleTabClick} className='text-decoration-none text-black'>Web Development</Link>
+                                                <Link to="#" onClick={handleTabClick} className='text-black text-decoration-none'>Web Development</Link>
                                             </li>
                                             <li className='mb-3'>
-                                                <Link to="#" onClick={handleTabClick} className='text-decoration-none text-black'>Graphic Design</Link>
+                                                <Link to="#" onClick={handleTabClick} className='text-black text-decoration-none'>Graphic Design</Link>
                                             </li>
                                             <li className='mb-3'>
-                                                <Link to="#" onClick={handleTabClick} className='text-decoration-none text-black'>App Development</Link>
+                                                <Link to="#" onClick={handleTabClick} className='text-black text-decoration-none'>App Development</Link>
                                             </li>
                                             <li className='mb-3'>
-                                                <Link to="#" onClick={handleTabClick} className='text-decoration-none text-black'>Game Development</Link>
+                                                <Link to="#" onClick={handleTabClick} className='text-black text-decoration-none'>Game Development</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -377,14 +377,14 @@ const Footer = () => {
                                         <div className="footer-toggle">
                                             <p>Accompany us on our growth journey to glean insights from our experiences </p>
                                             <form onSubmit={onsubmit} className='single-footer-widget'>
-                                                <input className="mil-rounded-input mil-text-center mil-mb-5" type="email"
+                                                <input className="mil-mb-5 mil-rounded-input mil-text-center" type="email"
                                                     id='email'
                                                     name='email'
                                                     placeholder="Enter Your Email"
                                                     value={data.email}
                                                     onChange={onhange}
                                                     required />
-                                                <button className="mil-button mil-accent-bg mil-fw" type="submit">
+                                                <button className="mil-accent-bg mil-button mil-fw" type="submit">
                                                     <span className="text-light">Subscribe</span></button>
                                             </form>
                                         </div>
@@ -392,15 +392,15 @@ const Footer = () => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-                        <div className="col-lg-6 wow fadeInLeft animated">
+                        <div className="col-lg-6 animated fadeInLeft wow">
                             <div className="footer-bottom-content">
                                 <div className="footer-bottom-content-copy">
-                                    <p className='text-center '>Copyright © 2025 Websolex infotech. All Rights Reserved. </p>
+                                    <p className='text-center'>Copyright © 2025 Websolex infotech. All Rights Reserved. </p>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-6 wow fadeInRight animated">
-                            <ul className="footer-social d-flex flex-row justify-content-center p-0 ps-lg-3 justify-content-lg-end align-items-right float-right">
+                        <div className="col-lg-6 animated fadeInRight wow">
+                            <ul className="d-flex flex-row align-items-right float-right justify-content-center justify-content-lg-end p-0 footer-social ps-lg-3">
                                 <li>
                                     <Link to="https://www.facebook.com/profile.php?id=61559410317814" target="_new">
                                         <LuFacebook />

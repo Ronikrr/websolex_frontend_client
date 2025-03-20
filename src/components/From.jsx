@@ -108,7 +108,7 @@ const EMAIL_TEMPLATE_CONTACT = process.env.EMAIL_TEMPLATE_CONTACT
 const EMAIL_APIKEY_CONTACT = process.env.EMAIL_APIKEY_CONTACT
 
 const sendEmail = (emailParams) => {
-    return EmailJS.send(EMAIL_KEY_CONTACT, EMAIL_TEMPLATE_CONTACT, emailParams, EMAIL_APIKEY_CONTACT)
+    return EmailJS.send('service_soybehv', 'template_73gw0e4', emailParams, 'yC07B7kWN5O46D558')
         .then(response => {
             if (response.status === 200) {
                 setFeedback({
@@ -195,6 +195,7 @@ const onSubmit = async (e) => {
 
 
     } catch (error) {
+        console.log(error)
         setFeedback({
             message: `An error occurred : ${error.message}`,
             type: "error",
@@ -212,24 +213,24 @@ return (
         <section className="contact_form">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="contact_heading text-center col-12 col-xl-6 mb-4 mb-xxl-5">
-                        <h3 className="fw-semibold mb-4 wow animate__animated animate__fadeInDown">Let’s Connect and Create Something Amazing!</h3>
-                        <p className='wow animate__animated animate__fadeInDown'>We’re here to answer your questions, discuss your ideas, and help your business grow. Reach out to us anytime we’d love to hear from you!</p>
+                    <div className="col-12 col-xl-6 text-center contact_heading mb-4 mb-xxl-5">
+                        <h3 className="animate__animated animate__fadeInDown fw-semibold mb-4 wow">Let’s Connect and Create Something Amazing!</h3>
+                        <p className='animate__animated animate__fadeInDown wow'>We’re here to answer your questions, discuss your ideas, and help your business grow. Reach out to us anytime we’d love to hear from you!</p>
                     </div>
                     <div className="col-12 d-flex flex-wrap align-items-center">
                         <div className="col-12 col-xl-6 mb-5 mb-xl-0">
-                            <div className="contact_form_sub rounded-3 m-xl-3">
-                                <h2 className="mb-4 text-center wow animate__animated animate__fadeInDown">Get in Touch with Us</h2>
+                            <div className="m-xl-3 rounded-3 contact_form_sub">
+                                <h2 className="text-center animate__animated animate__fadeInDown mb-4 wow">Get in Touch with Us</h2>
                                 <form onSubmit={onSubmit}>
-                                    <div className="input_main_menu d-flex flex-wrap">
-                                        <div className="input_sub_box col-12 col-md-6 ps-0">
-                                            <div className="m-2 wow animate__animated animate__fadeInBottomLeft">
+                                    <div className="d-flex flex-wrap input_main_menu">
+                                        <div className="col-12 col-md-6 input_sub_box ps-0">
+                                            <div className="m-2 animate__animated animate__fadeInBottomLeft wow">
                                                 <input
                                                     type="text"
                                                     id='name'
                                                     name='name'
                                                     placeholder="Enter Your Name"
-                                                    className="py-2 ps-3 pe-2 border-0 rounded-2 mb-3 col-12"
+                                                    className="col-12 border-0 rounded-2 mb-3 pe-2 ps-3 py-2"
                                                     value={data.name}
                                                     onChange={onChange}
                                                     required
@@ -239,14 +240,14 @@ return (
                                                 <small className='text-danger'> {errors.name} </small>
                                             )}
                                         </div>
-                                        <div className="input_sub_box col-12 col-md-6 ps-0">
-                                            <div className="m-2 wow animate__animated animate__fadeInBottomRight">
+                                        <div className="col-12 col-md-6 input_sub_box ps-0">
+                                            <div className="m-2 animate__animated animate__fadeInBottomRight wow">
                                                 <input
                                                     type="email"
                                                     id='email'
                                                     name='email'
                                                     placeholder="Enter Your Email"
-                                                    className="py-2 ps-3 pe-2 border-0 rounded-2 mb-3 col-12"
+                                                    className="col-12 border-0 rounded-2 mb-3 pe-2 ps-3 py-2"
                                                     value={data.email}
                                                     onChange={onChange}
                                                     required
@@ -256,14 +257,14 @@ return (
                                                 <small className='text-danger'> {errors.email} </small>
                                             )}
                                         </div>
-                                        <div className="input_sub_box col-12 col-md-6 ps-0">
-                                            <div className="m-2 wow animate__animated animate__fadeInBottomLeft">
+                                        <div className="col-12 col-md-6 input_sub_box ps-0">
+                                            <div className="m-2 animate__animated animate__fadeInBottomLeft wow">
                                                 <input
                                                     type="tel"
                                                     id='contactnumber'
                                                     name='contactnumber'
                                                     placeholder="Contact Number"
-                                                    className="py-2 ps-3 pe-2 border-0 rounded-2 mb-3 col-12"
+                                                    className="col-12 border-0 rounded-2 mb-3 pe-2 ps-3 py-2"
                                                     value={data.contactnumber}
                                                     onChange={onChange}
                                                     required
@@ -273,12 +274,12 @@ return (
                                                 <small className='text-danger'> {errors.contactnumber} </small>
                                             )}
                                         </div>
-                                        <div className="input_sub_box col-12 col-md-6 ps-0">
-                                            <div className="m-2 wow animate__animated animate__fadeInBottomRight">
+                                        <div className="col-12 col-md-6 input_sub_box ps-0">
+                                            <div className="m-2 animate__animated animate__fadeInBottomRight wow">
                                                 <select
                                                     id="subject"
                                                     name="subject"
-                                                    className="py-2 ps-3 pe-2 border-0 rounded-2 mb-3 col-12 bg-white"
+                                                    className="col-12 bg-white border-0 rounded-2 mb-3 pe-2 ps-3 py-2"
                                                     value={data.subject}
                                                     onChange={onChange}
                                                     required
@@ -294,25 +295,25 @@ return (
                                             </div>
                                         </div>
                                         {showtextbox && (
-                                            <div className="m-2 other_input col-12 input_sub_box wow animate__animated animate__fadeInUpBig">
+                                            <div className="col-12 input_sub_box m-2 animate__animated animate__fadeInUpBig other_input wow">
                                                 <input
                                                     type="text"
                                                     id="otherTextInput"
                                                     name="otherText"
                                                     placeholder="Please Specify"
-                                                    className="py-2 ps-3 pe-2 border-0 rounded-2 mb-3"
+                                                    className="border-0 rounded-2 mb-3 pe-2 ps-3 py-2"
                                                     value={data.subject}
                                                     onChange={onChange}
                                                 />
                                             </div>
                                         )}
-                                        <div className="input_sub_box col-12 ps-0">
-                                            <div className="m-2 wow animate__animated animate__fadeInUp">
+                                        <div className="col-12 input_sub_box ps-0">
+                                            <div className="m-2 animate__animated animate__fadeInUp wow">
                                                 <textarea
                                                     id='message'
                                                     name='message'
                                                     placeholder="Submit Your Message Request"
-                                                    className="py-2 ps-3 pe-2 border-0 rounded-2 col-12"
+                                                    className="col-12 border-0 rounded-2 pe-2 ps-3 py-2"
                                                     value={data.message}
                                                     onChange={onChange}
                                                     required
@@ -320,10 +321,10 @@ return (
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="contact_btn mt-4 d-flex justify-content-center wow animate__animated animate__slideInLeft">
+                                    <div className="d-flex justify-content-center animate__animated animate__slideInLeft contact_btn mt-4 wow">
                                         <button
                                             type="submit"
-                                            className="home_btn border text-light rounded-3 m-2 fw-semibold"
+                                            className="border m-2 rounded-3 text-light fw-semibold home_btn"
                                             title="Send Your Message!">
                                             Send Message
                                         </button>
@@ -333,14 +334,14 @@ return (
                         </div>
                         <div className="col-12 col-xl-6 pe-0">
                             <div className="contact_company_details_box">
-                                <h2 className="fw-bold text-center mb-0 wow animate__animated animate__fadeInDown">Contact Details</h2>
+                                <h2 className="text-center animate__animated animate__fadeInDown fw-bold mb-0 wow">Contact Details</h2>
                             </div>
-                            <div className="col-12 d-flex flex-wrap px-0 pt-5">
+                            <div className="col-12 d-flex flex-wrap pt-5 px-0">
                                 <div className="col-12 col-md-6 ps-0">
                                     <div className="me-0 me-md-3 me-xl-2 me-xxl-4">
-                                        <div className="contact_sub_boxx d-xxl-flex col-12 text-center text-xxl-start border rounded-2 mb-4 wow animate__animated animate__fadeInRight">
-                                            <div className="contact_icons_bg me-xxl-3 d-flex justify-content-center mb-3 mb-xxl-0">
-                                                <MdLocationPin className='d-flex text-light justify-content-center align-items-center rounded-3 p-2' />
+                                        <div className="col-12 d-xxl-flex border rounded-2 text-center text-xxl-start animate__animated animate__fadeInRight contact_sub_boxx mb-4 wow">
+                                            <div className="d-flex justify-content-center contact_icons_bg mb-3 mb-xxl-0 me-xxl-3">
+                                                <MdLocationPin className='d-flex align-items-center justify-content-center p-2 rounded-3 text-light' />
                                             </div>
                                             <div className="contact_details">
                                                 <h4>Address</h4>
@@ -351,9 +352,9 @@ return (
                                 </div>
                                 <div className="col-12 col-md-6 ps-0">
                                     <div className="me-0 me-xl-2 me-xxl-4">
-                                        <div className="contact_sub_boxx d-xxl-flex col-12 text-center text-xxl-start border rounded-2 mb-4 mb-md-0 wow animate__animated animate__fadeInRight">
-                                            <div className="contact_icons_bg me-xxl-3 d-flex justify-content-center mb-3 mb-xxl-0">
-                                                <FaPhone className='d-flex text-light justify-content-center align-items-center rounded-3 p-2' />
+                                        <div className="col-12 d-xxl-flex border rounded-2 text-center text-xxl-start animate__animated animate__fadeInRight contact_sub_boxx mb-4 mb-md-0 wow">
+                                            <div className="d-flex justify-content-center contact_icons_bg mb-3 mb-xxl-0 me-xxl-3">
+                                                <FaPhone className='d-flex align-items-center justify-content-center p-2 rounded-3 text-light' />
                                             </div>
                                             <div className="contact_details">
                                                 <h4>Mobile</h4>
@@ -364,9 +365,9 @@ return (
                                 </div>
                                 <div className="col-12 col-md-6 ps-0">
                                     <div className="me-0 me-md-3 me-xl-2 me-xxl-4">
-                                        <div className="contact_sub_boxx d-xxl-flex col-12 text-center text-xxl-start border rounded-2 mb-4 mb-md-0 wow animate__animated animate__fadeInRight">
-                                            <div className="contact_icons_bg me-xxl-3 d-flex justify-content-center mb-3 mb-xxl-0">
-                                                <FaClock className='d-flex text-light justify-content-center align-items-center rounded-3 p-2' />
+                                        <div className="col-12 d-xxl-flex border rounded-2 text-center text-xxl-start animate__animated animate__fadeInRight contact_sub_boxx mb-4 mb-md-0 wow">
+                                            <div className="d-flex justify-content-center contact_icons_bg mb-3 mb-xxl-0 me-xxl-3">
+                                                <FaClock className='d-flex align-items-center justify-content-center p-2 rounded-3 text-light' />
                                             </div>
                                             <div className="contact_details">
                                                 <h4>Availability</h4>
@@ -377,9 +378,9 @@ return (
                                 </div>
                                 <div className="col-12 col-md-6 ps-0">
                                     <div className="me-0 me-xl-2 me-xxl-4">
-                                        <div className="contact_sub_boxx d-xxl-flex col-12 text-center text-xxl-start border rounded-2 wow animate__animated animate__fadeInRight">
-                                            <div className="contact_icons_bg me-xxl-3 d-flex justify-content-center mb-3 mb-xxl-0">
-                                                <MdEmail className='d-flex text-light justify-content-center align-items-center rounded-3 p-2' />
+                                        <div className="col-12 d-xxl-flex border rounded-2 text-center text-xxl-start animate__animated animate__fadeInRight contact_sub_boxx wow">
+                                            <div className="d-flex justify-content-center contact_icons_bg mb-3 mb-xxl-0 me-xxl-3">
+                                                <MdEmail className='d-flex align-items-center justify-content-center p-2 rounded-3 text-light' />
                                             </div>
                                             <div className="contact_details">
                                                 <h4>Email</h4>
@@ -389,26 +390,26 @@ return (
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-12 d-flex flex-column flex-lg-row mt-5 mt-xl-3 justify-content-between py-5 ps-3 py-sm-4 ps-sm-4 pe-0 align-items-center border-top">
-                                <h6 className="fw-bold mb-4 mb-md-0 font_size wow animate__animated animate__slideInRight">Social Media:</h6>
-                                <ul className="social_main_menu d-flex ps-0 mb-0">
-                                    <li className="me-3 wow animate__animated animate__slideInRight">
-                                        <Link to={diractsocial?.facebook} target='_blank' className="border rounded-3 d-flex align-items-center">
+                            <div className="col-12 d-flex flex-column flex-lg-row align-items-center border-top justify-content-between mt-5 mt-xl-3 pe-0 ps-3 ps-sm-4 py-5 py-sm-4">
+                                <h6 className="animate__animated animate__slideInRight font_size fw-bold mb-4 mb-md-0 wow">Social Media:</h6>
+                                <ul className="d-flex mb-0 ps-0 social_main_menu">
+                                    <li className="animate__animated animate__slideInRight me-3 wow">
+                                        <Link to={diractsocial?.facebook} target='_blank' className="d-flex align-items-center border rounded-3">
                                             <FaFacebookF className='text-black fs-5' />
                                         </Link>
                                     </li>
-                                    <li className="me-3 wow animate__animated animate__slideInRight">
-                                        <Link to={diractsocial?.whatsapp} target='_blank' className="border rounded-3 d-flex align-items-center">
+                                    <li className="animate__animated animate__slideInRight me-3 wow">
+                                        <Link to={diractsocial?.whatsapp} target='_blank' className="d-flex align-items-center border rounded-3">
                                             <IoLogoWhatsapp className='text-black fs-5' />
                                         </Link>
                                     </li>
-                                    <li className="me-3 wow animate__animated animate__slideInRight">
-                                        <Link to={diractsocial?.instagram} target='_blank' className="border rounded-3 d-flex align-items-center">
+                                    <li className="animate__animated animate__slideInRight me-3 wow">
+                                        <Link to={diractsocial?.instagram} target='_blank' className="d-flex align-items-center border rounded-3">
                                             <AiFillInstagram className='text-black fs-5' />
                                         </Link>
                                     </li>
-                                    <li className="me-3 wow animate__animated animate__slideInRight">
-                                        <Link to={diractsocial?.linkedin} target='_blank' className="border rounded-3 d-flex align-items-center">
+                                    <li className="animate__animated animate__slideInRight me-3 wow">
+                                        <Link to={diractsocial?.linkedin} target='_blank' className="d-flex align-items-center border rounded-3">
                                             <FaLinkedinIn className='text-black fs-5' />
                                         </Link>
                                     </li>
