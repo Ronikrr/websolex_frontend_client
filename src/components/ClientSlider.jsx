@@ -73,7 +73,7 @@ export default function Clientside() {
                     </div>
                     <div className="d-flex d-lg-none flex-wrap">
 
-                        {logos.map((logo, index) => (
+                        {logos?.map((logo, index) => (
                             <div
                                 key={index}
                                 className="col-6 col-xl-2 box"
