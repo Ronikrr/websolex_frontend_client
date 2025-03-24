@@ -43,32 +43,52 @@ export default function Clientside() {
                 />
             )}
 
-            <div className="row mb-md-4 align-items-center justify-content-center">
-                <div className="section_main_title text-center mb-3 mb-md-5">
-                    <h1 className="fw-bold wow animate__animated animate__fadeInDown">
+            <div className="row align-items-center justify-content-center mb-md-4">
+                <div className="text-center mb-3 mb-md-5 section_main_title">
+                    <h1 className="animate__animated animate__fadeInDown fw-bold wow">
                         Valued Clients
                     </h1>
                 </div>
 
-                <div className="clients col-12 text-center mb-md-3">
-                    {distributeLogos(logos || [], rowDistribution).map((row, rowIndex) => (
-                        <div key={rowIndex} className="col-12 d-flex flex-wrap justify-content-center">
-                            {row.map((logo, index) => (
-                                <div
-                                    key={index}
-                                    className="box col-md-6 col-xl-2"
-                                >
-                                    <div className="box_body m-2 rounded-1 border-bottom">
-                                        <img
-                                            src={logo?.image || "/placeholder.svg"}
-                                            className="img-fluid w-75 image_shadow wow animate__animated animate__fadeIn"
-                                            alt={logo?.altText || "Client Logo"}
-                                        />
+                <div className="col-12 text-center clients mb-md-3">
+                    <div className="d-lg-block d-none">
+                        {distributeLogos(logos || [], rowDistribution).map((row, rowIndex) => (
+                            <div key={rowIndex} className="col-12 d-flex flex-wrap justify-content-center">
+                                {row.map((logo, index) => (
+                                    <div
+                                        key={index}
+                                        className="col-6 col-xl-2 box"
+                                    >
+                                        <div className="border-bottom m-2 rounded-1 box_body">
+                                            <img
+                                                src={logo?.image || "/placeholder.svg"}
+                                                className="w-75 animate__animated animate__fadeIn image_shadow img-fluid wow"
+                                                alt={logo?.altText || "Client Logo"}
+                                            />
+                                        </div>
                                     </div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="d-flex d-lg-none flex-wrap">
+
+                        {logos.map((logo, index) => (
+                            <div
+                                key={index}
+                                className="col-6 col-xl-2 box"
+                            >
+                                <div className="border-bottom m-2 rounded-1 box_body">
+                                    <img
+                                        src={logo?.image || "/placeholder.svg"}
+                                        className="w-75 animate__animated animate__fadeIn image_shadow img-fluid wow"
+                                        alt={logo?.altText || "Client Logo"}
+                                    />
                                 </div>
-                            ))}
-                        </div>
-                    ))}
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
             </div>
         </div>
