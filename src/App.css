@@ -48,20 +48,11 @@ a {
   aspect-ratio: 1/1;
 }
 
-@media (max-width: 411px) {
+@media (max-width: 768px) {
   .images_data {
-    /* width: 200px;*/
-    height: 150px;
-      padding-right: 15px;
-      padding-left: 15px;
-    }
-    }
-@media (min-width: 412px) and (max-width: 768px) {
-  .images_data {
-    width: 200px;
-    height: 170px;
-    padding-right: 15px;
-    padding-left: 15px;
+      width: 50%;
+        /* height: 250px; */
+        padding: 0 15px;
   }
 }
 

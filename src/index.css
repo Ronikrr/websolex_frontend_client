@@ -37,7 +37,7 @@ code {
 @media (max-width:1920px) {
   .images_data {
     width: 360px;
-    height: 360px;
+    /* height: 360px; */
   }
 }
 
