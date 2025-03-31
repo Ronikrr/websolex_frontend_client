@@ -20,7 +20,7 @@ const Careersection = () => {
               <div className="col-12 d-flex flex-wrap">
                 <div className="col-4">
                   <div className="haring_sub_box p-3 rounded-3 mx-2 mb-5">
-                    <img src={webflow} alt="" className="mb-3" />
+                    <img loading='lazy' src={webflow} alt="" className="mb-3" />
                     <h3 className="mb-2">Identify the hiring need</h3>
                     <p>
                       We're searching for qualified people to join our group.
@@ -41,7 +41,7 @@ const Careersection = () => {
                 </div>
                 <div className="col-4">
                   <div className="haring_sub_box p-3 rounded-3 mx-2 mb-5">
-                    <img src={webflow} alt="" className="mb-3" />
+                    <img loading='lazy' src={webflow} alt="" className="mb-3" />
                     <h3 className="mb-2">Identify the hiring need</h3>
                     <p>
                       We're searching for qualified people to join our group.
@@ -62,7 +62,7 @@ const Careersection = () => {
                 </div>
                 <div className="col-4">
                   <div className="haring_sub_box p-3 rounded-3 mx-2 mb-5">
-                    <img src={webflow} alt="" className="mb-3" />
+                    <img loading='lazy' src={webflow} alt="" className="mb-3" />
                     <h3 className="mb-2">Identify the hiring need</h3>
                     <p>
                       We're searching for qualified people to join our group.
@@ -83,7 +83,7 @@ const Careersection = () => {
                 </div>
                 <div className="col-4">
                   <div className="haring_sub_box p-3 rounded-3 mx-2">
-                    <img src={webflow} alt="" className="mb-3" />
+                    <img loading='lazy' src={webflow} alt="" className="mb-3" />
                     <h3 className="mb-2">Identify the hiring need</h3>
                     <p>
                       We're searching for qualified people to join our group.
@@ -104,7 +104,7 @@ const Careersection = () => {
                 </div>
                 <div className="col-4">
                   <div className="haring_sub_box p-3 rounded-3 mx-2">
-                    <img src={webflow} alt="" className="mb-3" />
+                    <img loading='lazy' src={webflow} alt="" className="mb-3" />
                     <h3 className="mb-2">Identify the hiring need</h3>
                     <p>
                       We're searching for qualified people to join our group.
@@ -125,7 +125,7 @@ const Careersection = () => {
                 </div>
                 <div className="col-4">
                   <div className="haring_sub_box p-3 rounded-3 mx-2">
-                    <img src={webflow} alt="" className="mb-3" />
+                    <img loading='lazy' src={webflow} alt="" className="mb-3" />
                     <h3 className="mb-2">Identify the hiring need</h3>
                     <p>
                       We're searching for qualified people to join our group.

@@ -39,7 +39,7 @@ const Blog = () => {
                                 <div className="col-md-6 col-xl-4 mb-5" key={data?._id} >
                                     <div className="blog_sub p-2">
                                         <div className="blog_images mb-4">
-                                            <img src={data?.image} alt="" className='img-fluid box_image ' />
+                                            <img loading='lazy' src={data?.image} alt="" className='img-fluid box_image ' />
                                         </div>
                                         <div className="blog_content position-relative">
                                             <h5 className='fw-bold'>{data?.content[0]?.title}</h5>

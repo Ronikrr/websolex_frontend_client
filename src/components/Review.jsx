@@ -100,7 +100,7 @@ const Testimonials = () => {
                                             <div className="d-flex align-items-center mt-5 justify-content-between">
                                                 <div className="testimonials_sub_box1 d-flex align-items-center">
                                                     <div className="image col-4">
-                                                        <img
+                                                        <img loading='lazy'
                                                             src={item?.image || img4} // Fallback to a default image
                                                             alt={item?.name}
                                                             className="testimonial_img "
@@ -112,7 +112,7 @@ const Testimonials = () => {
                                                     </div>
                                                 </div>
                                                 <div className="testimonials_sub_box2">
-                                                    <img src={img4} alt="Quotation mark" />
+                                                    <img loading='lazy' src={img4} alt="Quotation mark" />
                                                 </div>
                                             </div>
                                         </div>

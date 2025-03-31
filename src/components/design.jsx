@@ -37,7 +37,7 @@ function design() {
                             <div className="card-body text-center text-lg-start p-4 border-0 ">
                                 <div className="card_body_sub">
                                     <div className="card_icon rounded-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-3 ">
-                                        <img src={c.src} alt="" className='fs-2  img-fluid col-2 col-md-3 col-lg-2' />
+                                        <img loading='lazy' src={c.src} alt="" className='fs-2  img-fluid col-2 col-md-3 col-lg-2' />
                                     </div>
                                     <h5 className="mb-1 fw-bold  text-capitalize mb-2" >{c.name}</h5>
                                     <h6 className='col-xxl-12'>{c.title}</h6>

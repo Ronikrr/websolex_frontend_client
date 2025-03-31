@@ -219,7 +219,7 @@ function Service() {
                   <div className="card-body text-center text-lg-start p-4 border-0">
                     <div className="card_body_sub">
                       <div className="card_icon rounded-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-3">
-                        <img
+                        <img loading='lazy'
                           src={service.imgSrc}
                           alt={service.title}
                           className="fs-2 img-fluid col-2 col-md-3 col-lg-2"

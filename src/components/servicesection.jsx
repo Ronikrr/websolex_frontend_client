@@ -65,7 +65,7 @@ const ServiceSection = () => {
                                 <div key={service.id} className="col-12 col-md-6  ">
                                     <div className="service_sub_box overflow-hidden  d-lg-flex p-3 my-lg-2 mx-lg-2 mb-4 mb-lg-3 me-md-3 wow animate__animated animate__fadeInUp">
                                         <div className="icon col-lg-1 me-0 me-lg-4 mb-4 mb-lg-0 d-flex d-lg-block align-align-items-center justify-content-center">
-                                            <img src={service.icon} alt="" className='col-2 col-lg-12' />
+                                            <img loading='lazy' src={service.icon} alt="" className='col-2 col-lg-12' />
                                         </div>
 
                                         <div className="service_content  col-12 col-lg-10 text-center text-lg-start">

@@ -129,7 +129,7 @@ const TechnologiesSection = () => {
                                     <div key={tech.id} className="col-6 col-md-3 col-lg-2 rounded-1 text-center d-flex wow animate__animated animate__fadeInBottomLeft">
                                         <div className="card pb-3">
                                             <div className="d-flex col-12 justify-content-center  my-3   rounded-5">
-                                                <img src={tech.src} alt={tech.alt} className=" border-0 img-fluid col-7 col-xxl-6 rounded-5 p-3" />
+                                                <img loading='lazy' src={tech.src} alt={tech.alt} className=" border-0 img-fluid col-7 col-xxl-6 rounded-5 p-3" />
                                             </div>
                                             <span className='text-center text-uppercase' > {tech.name} </span>
                                         </div>

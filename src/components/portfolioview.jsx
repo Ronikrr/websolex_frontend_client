@@ -40,7 +40,7 @@ const Portfolioview = () => {
                 <p>{portfolioData.description}</p>
               </div>
               <div className="mb-4 col-12 col-md-6 ">
-                <img
+                <img loading='lazy'
                   src={portfolioData.image}
                   className="PortfolioImage"
                   alt={portfolioData.alt}

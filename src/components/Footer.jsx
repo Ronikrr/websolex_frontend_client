@@ -102,7 +102,7 @@ const Footer = () => {
                                     <div className="footer-toggle">
                                         <div className="footer-logo-main-black mb-3">
                                             <Link to="/" onClick={handleTabClick}>
-                                                <img src={logo} alt="Logo" />
+                                                <img loading='lazy' src={logo} alt="Logo" />
                                             </Link>
                                         </div>
                                         <p>Your Ideas, Our Innovation</p>
@@ -277,7 +277,7 @@ const Footer = () => {
                                     <div className="footer-toggle">
                                         <div className="footer-logo-main-black mb-3">
                                             <Link to="index.html">
-                                                <img src={logo} alt="Logicgo-Logo" className='col-4 img-fluid' />
+                                                <img loading='lazy' src={logo} alt="Logicgo-Logo" className='col-4 img-fluid' />
                                             </Link>
                                         </div>
                                         <p>Your Ideas, Our Innovation</p>

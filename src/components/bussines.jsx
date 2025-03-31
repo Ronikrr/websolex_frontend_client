@@ -46,7 +46,7 @@ const Bussines = () => {
                         <div className="col-12 d-flex flex-wrap">
                             <div className="col-12 col-lg-8 mb-5 mb-lg-0">
                                 <div className="bussines_image">
-                                    <img src={blogdata.image} alt="" className='col-12' />
+                                    <img loading='lazy' src={blogdata.image} alt="" className='col-12' />
                                 </div>
                                 <div className="bussines_content mt-4 ">
                                     <div className="bussines_name d-flex align-items-center mb-2">
@@ -77,7 +77,7 @@ const Bussines = () => {
                                         <div className="bolg_sub d-flex ">
                                             <Link className='d-flex text-dark col-12 text-decoration-none flex-wrap flex-xl-nowrap'>
                                                 <div className="blog_image col-12  col-xl-3 me-2 d-flex justify-content-center mb-3">
-                                                    <img src={blog_two} alt="" className='rounded-2 col-xl-12 ' />
+                                                    <img loading='lazy' src={blog_two} alt="" className='rounded-2 col-xl-12 ' />
                                                 </div>
                                                 <div className="sub_blog_content col-12  col-xl-9 text-center text-xl-start">
                                                     <h6>1. How to Choose the Right IT Service Provider for Your Business</h6>
@@ -88,7 +88,7 @@ const Bussines = () => {
                                         <div className="bolg_sub d-flex ">
                                             <Link className='d-flex text-dark text-decoration-none flex-wrap flex-xl-nowrap'>
                                                 <div className="blog_image col-12 col-xl-3 me-2 d-flex justify-content-center mb-3">
-                                                    <img src={blogimg3} alt="" className='rounded-2 col-xl-12 ' />
+                                                    <img loading='lazy' src={blogimg3} alt="" className='rounded-2 col-xl-12 ' />
                                                 </div>
                                                 <div className="sub_blog_content col-xl-9 text-center text-xl-start">
                                                     <h6>2.The Importance of Cybersecurity for Small Businesses</h6>
@@ -99,7 +99,7 @@ const Bussines = () => {
                                         <div className="bolg_sub d-flex ">
                                             <Link className='d-flex text-dark text-decoration-none flex-wrap flex-xl-nowrap'>
                                                 <div className="blog_image col-12 col-xl-3 me-2 d-flex justify-content-center mb-3">
-                                                    <img src={blogimg4} alt="" className='rounded-2 col-xl-12 ' />
+                                                    <img loading='lazy' src={blogimg4} alt="" className='rounded-2 col-xl-12 ' />
                                                 </div>
                                                 <div className="sub_blog_content col-xl-9 text-center text-xl-start">
                                                     <h6>3.IT’s Key Role in Powering Digital Business Evolution.</h6>
@@ -110,7 +110,7 @@ const Bussines = () => {
                                         <div className="bolg_sub d-flex ">
                                             <Link className='d-flex text-dark text-decoration-none flex-wrap flex-xl-nowrap'>
                                                 <div className="blog_image col-12 col-xl-3 me-2 d-flex justify-content-center mb-3">
-                                                    <img src={blogimg5} alt="" className='rounded-2 col-xl-12 ' />
+                                                    <img loading='lazy' src={blogimg5} alt="" className='rounded-2 col-xl-12 ' />
                                                 </div>
                                                 <div className="sub_blog_content col-xl-9 text-center text-xl-start">
                                                     <h6>4.Why Your Business Needs a Custom Software Solution</h6>
@@ -123,22 +123,22 @@ const Bussines = () => {
                                         <h2 className='mb-4 fw-bold text-center text-xl-start'>Instagram Post</h2>
                                         <div className="blog_insta_box d-flex flex-wrap col-12">
                                             <div className="blog_img col-4">
-                                                <Link><img src={insta1} alt="" className='p-2 col-12 img-fluid' /></Link>
+                                                <Link><img loading='lazy' src={insta1} alt="" className='p-2 col-12 img-fluid' /></Link>
                                             </div>
                                             <div className="blog_img col-4">
-                                                <Link><img src={insta2} alt="" className='p-2 col-12 img-fluid' /></Link>
+                                                <Link><img loading='lazy' src={insta2} alt="" className='p-2 col-12 img-fluid' /></Link>
                                             </div>
                                             <div className="blog_img col-4">
-                                                <Link><img src={insta3} alt="" className='p-2 col-12 img-fluid' /></Link>
+                                                <Link><img loading='lazy' src={insta3} alt="" className='p-2 col-12 img-fluid' /></Link>
                                             </div>
                                             <div className="blog_img col-4">
-                                                <Link><img src={insta4} alt="" className='p-2 col-12 img-fluid' /></Link>
+                                                <Link><img loading='lazy' src={insta4} alt="" className='p-2 col-12 img-fluid' /></Link>
                                             </div>
                                             <div className="blog_img col-4">
-                                                <Link><img src={insta5} alt="" className='p-2 col-12 img-fluid' /></Link>
+                                                <Link><img loading='lazy' src={insta5} alt="" className='p-2 col-12 img-fluid' /></Link>
                                             </div>
                                             <div className="blog_img col-4">
-                                                <Link><img src={insta7} alt="" className='p-2 col-12 img-fluid' /></Link>
+                                                <Link><img loading='lazy' src={insta7} alt="" className='p-2 col-12 img-fluid' /></Link>
                                             </div>
                                         </div>
                                     </div>

@@ -60,7 +60,7 @@ export default function Clientside() {
                                         className="col-6 col-xl-2 box"
                                     >
                                         <div className="border-bottom m-2 rounded-1 box_body">
-                                            <img
+                                            <img loading='lazy'
                                                 src={logo?.image || "/placeholder.svg"}
                                                 className="w-75 animate__animated animate__fadeIn image_shadow img-fluid wow"
                                                 alt={logo?.altText || "Client Logo"}
@@ -79,7 +79,7 @@ export default function Clientside() {
                                 className="col-6 col-xl-2 box"
                             >
                                 <div className="border-bottom m-2 rounded-1 box_body">
-                                    <img
+                                    <img loading='lazy'
                                         src={logo?.image || "/placeholder.svg"}
                                         className="w-75 animate__animated animate__fadeIn image_shadow img-fluid wow"
                                         alt={logo?.altText || "Client Logo"}

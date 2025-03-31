@@ -48,7 +48,7 @@ function MeetOurTeam() {
                                 <div className="position-relative card_options mg-10 mx-md-3 w-100 ">
                                     <div className="card">
                                         <div className="card-img-top h-auto">
-                                            <img
+                                            <img loading='lazy'
                                                 src={member?.image}
                                                 alt={`${member?.name}'s Profile`}
                                                 className="img-fluid profile_image"

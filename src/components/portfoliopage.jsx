@@ -83,7 +83,7 @@ const PortfolioSection = () => {
                       onClick={scrollToTop}
                       className="card_img w-100  overflow-hidden z-1 rounded-3 position-relative"
                     >
-                      <img
+                      <img loading='lazy'
                         src={image?.image}
                         alt={image?.alt}
                         className="img-fluid portfolio-image"

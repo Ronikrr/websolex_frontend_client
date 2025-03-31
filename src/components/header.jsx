@@ -156,7 +156,7 @@ const Header = () => {
                         <div className="row">
                             <nav className="navbar navbar-expand-lg">
                                 <div className="container-fluid">
-                                    <Link className="navbar-brand col-2 " to="/" ><img src={logo} alt="WebSolex Infotech" /></Link>
+                                    <Link className="navbar-brand col-2 " to="/" ><img loading='lazy' src={logo} alt="WebSolex Infotech" /></Link>
                                     <button className="navbar-toggler" type="button" onClick={toggleNavbar} aria-expanded={!isCollapsed}>
                                         <span className="navbar-toggler-icon"></span>
                                     </button>
@@ -182,7 +182,7 @@ const Header = () => {
                                                                 {
                                                                     ServiceTab.map((v, i) => <div key={i} className="megamenu_width border-right mb-4 px-0 px-xl-2">
                                                                         <div className="d-flex ms-lg-2 ms-xl-4 align-items-center">
-                                                                            <img src={v.img} alt="" className='megamenu_icon' />
+                                                                            <img loading='lazy' src={v.img} alt="" className='megamenu_icon' />
                                                                             <Link className='text-black text-decoration-none ms-2' onClick={() => setMouseEnter(false)}
                                                                                 to={v.path}>{v.name}</Link>
                                                                         </div>
@@ -234,7 +234,7 @@ const Header = () => {
                         <div className="row">
                             <nav className="navbar navbar-expand-lg py-3 px-2 px-md-0">
                                 <div className="container-fluid d-flex">
-                                    <Link className="navbar-brand col-2" to="/" onClick={handleTabClick}><img src={logo} alt="Logo" /></Link>
+                                    <Link className="navbar-brand col-2" to="/" onClick={handleTabClick}><img loading='lazy' src={logo} alt="Logo" /></Link>
                                     <button
                                         className={`navbar-toggler ${isCollapsed ? '' : 'collapsed'}`}
                                         type="button"

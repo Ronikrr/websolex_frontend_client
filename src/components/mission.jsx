@@ -71,7 +71,7 @@ function Mission() {
                                     </div>
                                     <div className="col-12 col-lg-3 col-xl-4 d-flex mt-3 mt-lg-0">
                                         <div className="mission_img_section col-6 d-flex justify-content-end  flex-row wow animate__animated animate__fadeInUp">
-                                            <img src={missionData.image[0].src} height="500" className="" alt={missionData.image[0].alt} />
+                                            <img loading='lazy' src={missionData.image[0].src} height="500" className="" alt={missionData.image[0].alt} />
                                         </div>
                                         <div className="col-9 d-flex flex-column justify-content-start position-relative wow animate__animated animate__fadeInRight">
                                             <div className="line_box line_1 position-absolute text-start">

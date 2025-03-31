@@ -86,26 +86,26 @@ function Banner() {
                             </div>
                             <div className="col-12 col-lg-5 col-xl-6">
                                 <div className="image_sub_box d-flex justify-content-center position-relative wow animate__animated animate__fadeInRight">
-                                    <img src={"https://www.t3bucket.com/f/0-banner_section.webp"} alt="" className='col-12 col-md-9 col-xl-8 rounded-4' />
+                                    <img loading='lazy' src={"https://www.t3bucket.com/f/0-banner_section.webp"} alt="" className='col-12 col-md-9 col-xl-8 rounded-4' />
                                     <div className="review_main_box position-absolute bg-light p-3 d-flex align-items-center justify-content-between rounded-pill col-sm-8 col-md-6 col-lg-10 col-xl-7 col-xxl-6">
                                         <div className="review_image">
                                             <div
                                                 class="note-images d-flex position-relative justify-content-center justify-content-md-start me-3">
                                                 <div class="note-img d-flex justify-content-center align-items-center position-relative  overflow-hidden rounded-circle bg-light"
                                                     id="review_1">
-                                                    <Link to={'#'}> <img src={review_img1} alt="" className='border-0' /></Link>
+                                                    <Link to={'#'}> <img loading='lazy' src={review_img1} alt="" className='border-0' /></Link>
                                                 </div>
                                                 <div class="note-img d-flex justify-content-center align-items-center position-relative  overflow-hidden rounded-circle bg-light"
                                                     id="review_2">
-                                                    <a href="#review_2"><img src={review_img2} alt="" className='border-0' /></a>
+                                                    <a href="#review_2"><img loading='lazy' src={review_img2} alt="" className='border-0' /></a>
                                                 </div>
                                                 <div
                                                     class="note-img d-flex justify-content-center align-items-center position-relative  overflow-hidden rounded-circle bg-light">
-                                                    <img src={review_img3} alt="" className='border-0' />
+                                                    <img loading='lazy' src={review_img3} alt="" className='border-0' />
                                                 </div>
                                                 <div
                                                     class="note-img d-flex justify-content-center align-items-center position-relative  overflow-hidden rounded-circle bg-light">
-                                                    <img src={review_img4} alt="" className='border-0' />
+                                                    <img loading='lazy' src={review_img4} alt="" className='border-0' />
                                                 </div>
                                             </div>
                                         </div>
@@ -126,7 +126,7 @@ function Banner() {
                                             <h2 className='mb-0'>{project?.completedProjects}+</h2>
                                         </div>
                                         <div className=" col-6 ">
-                                            <img src={graf2} alt="" className='col-9' />
+                                            <img loading='lazy' src={graf2} alt="" className='col-9' />
                                         </div>
                                     </div>
                                     <div className="sale_report  d-sm-flex position-absolute justify-content-between bg-light p-3 rounded-4 col-7 col-md-6  col-lg-10 col-xl-7 col-xxl-6 ">
@@ -136,7 +136,7 @@ function Banner() {
                                             <p className='mb-0'>Real-Time Sales Analytics</p>
                                         </div>
                                         <div className="col-9 col-sm-5">
-                                            <img src={report_graf} alt="" className='col-12 border-0 h-100' />
+                                            <img loading='lazy' src={report_graf} alt="" className='col-12 border-0 h-100' />
                                         </div>
                                     </div>
                                 </div>
