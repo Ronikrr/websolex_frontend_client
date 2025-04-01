@@ -51,10 +51,9 @@ function Banner() {
                         <div className="col-12 d-flex flex-wrap">
                             <div className="col-12 col-lg-7 col-xl-6 mb-5 mb-lg-0">
                                 <div className="banner_content2 mt-5  text-center text-lg-start wow animate__animated animate__fadeInLeft">
-                                    <h2 className='text-light fs-5 fs-lg-6 mb-4'>Empowering Your Digital Transformation</h2>
-                                    <span className='text-light d-none d-lg-block text_p fs-lg-6 mb-4 '>At WebSolex Infotech, we specialize in delivering cutting-edge technology solutions that drive innovation and efficiency. From website development to application design, UI/UX services, graphics design, and digital marketing, we provide a full suite of IT services tailored to your needs. Let's build your digital future together.</span>
-                                    <span className='text-light d-inline d-lg-none text_p fs-lg-6 mb-4' >At WebSolex Infotech, we specialize in delivering cutting-edge technology solutions that drive innovation and efficiency.</span>
-                                    <div className="banner_button2 d-flex mt-5 pb-5 border-bottom justify-content-center justify-content-lg-start">
+                                    <h2 className='text-light fs-1'>Empowering Your Digital Transformation</h2>
+                                    <span className='text-light text_p fs-lg-6 '>At WebSolex Infotech, we specialize in delivering cutting-edge technology solutions that drive innovation and efficiency. From website development to application design, UI/UX services, graphics design, and digital marketing, we provide a full suite of IT services tailored to your needs. Let's build your digital future together.</span>
+                                    <div className="banner_button2 d-flex pb-5 border-bottom justify-content-center justify-content-lg-start">
                                         <Link onClick={handleTabClick} to="/contact" className='text-decoration-none text-light bg-light text-dark rounded-pill  me-3 border hover_button1'>Get Started</Link>
                                     </div>
                                     <div className="col-12 d-flex flex-wrap justify-content-center justify-content-center  text-center text-sm-start text-md-center text-lg-start mt-3 mt-md-0">
