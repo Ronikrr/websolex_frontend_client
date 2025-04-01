@@ -41,18 +41,18 @@ export default function Clientside() {
                 </div>
                 <div className="col-12 text-center clients mb-md-3">
                     {/* Desktop View */}
-                    {logos.length > 0 && (
+                    {logos?.length > 0 && (
                         <div className="d-lg-block d-none">
-                            {distributedLogos.map((row, rowIndex) => (
+                            {distributedLogos?.map((row, rowIndex) => (
                                 <div key={rowIndex} className="d-flex flex-wrap justify-content-center">
                                     {row.map((logo, index) => (
                                         <div key={index} className="col-6 col-xl-2 box">
                                             <div className="border-bottom m-2 rounded-1 box_body">
                                                 <img
                                                     loading='lazy'
-                                                    src={logo.image || "/placeholder.svg"}
+                                                    src={logo?.image || "/placeholder.svg"}
                                                     className="w-75 logos animate__animated animate__fadeIn image_shadow img-fluid wow"
-                                                    alt={logo.altText || "Client Logo"}
+                                                    alt={logo?.altText || "Client Logo"}
                                                 />
                                             </div>
                                         </div>
@@ -63,14 +63,14 @@ export default function Clientside() {
                     )}
                     {/* Mobile View */}
                     <div className="d-flex d-lg-none flex-wrap">
-                        {logos.map((logo, index) => (
+                        {logos?.map((logo, index) => (
                             <div key={index} className="col-6 col-xl-2 box">
                                 <div className="border-bottom m-2 rounded-1 box_body">
                                     <img
                                         loading='lazy'
-                                        src={logo.image || "/placeholder.svg"}
+                                        src={logo?.image || "/placeholder.svg"}
                                         className="w-75 logos animate__animated animate__fadeIn image_shadow img-fluid wow"
-                                        alt={logo.altText || "Client Logo"}
+                                        alt={logo?.altText || "Client Logo"}
                                     />
                                 </div>
                             </div>
