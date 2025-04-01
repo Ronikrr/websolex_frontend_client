@@ -7,14 +7,14 @@ import graphic from '../Assets/grafhics.png'
 import UIUX from '../Assets/uiux-icon.png'
 import mobile from '../Assets/mobile.png'
 import Digital from '../Assets/digital_marketing.png'
-import { useGetContactDetailsQuery }from '../redux/apiSlice'
+import { useGetContactDetailsQuery } from '../redux/apiSlice'
 import FeedbackMessage from './feedback';
 const Header = () => {
     const { data: contactDetails, error } = useGetContactDetailsQuery()
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [activeTab, setActiveTab] = useState('Home');
     const [mouseEnter, setMouseEnter] = useState(false)
-  const [feedback, setFeedback] = useState({ message: "", type: "" })
+    const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
     }
@@ -28,7 +28,7 @@ const Header = () => {
         setIsCollapsed(true);
     };
     useEffect(() => {
-        if (error) { 
+        if (error) {
             setFeedback({
                 message: `Error : ${error.message}`,
                 type: "error",

@@ -9,7 +9,6 @@ import { useGetClientRateQuery } from '../redux/apiSlice'
 import Loader from './loader';
 const Testimonials = () => {
     const { data: testimonials, loading, error } = useGetClientRateQuery()
-    console.log(testimonials)
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })

@@ -13,7 +13,6 @@ import Loader from './loader';
 const From = () => {
     const { data: diractcontact, loading: contactloading, error: contacterror } = useGetContactDetailsQuery()
     const { data: diractsocial, loading: socialloading, error: socialerror } = useGetSocialDetailsQuery()
-    console.log(diractsocial)
     const navigate = useNavigate();
     const [data, setdata] = useState({
         name: "",
@@ -192,7 +191,6 @@ const onSubmit = async (e) => {
 
 
     } catch (error) {
-        console.log(error)
         setFeedback({
             message: `An error occurred : ${error.message}`,
             type: "error",
