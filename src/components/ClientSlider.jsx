@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useGetOurWorkQuery } from "../redux/apiSlice";
 import FeedbackMessage from "./feedback";
-
 export default function Clientside() {
     const { data: logos = [], error } = useGetOurWorkQuery();
     const [feedback, setFeedback] = useState(null);
@@ -11,8 +10,9 @@ export default function Clientside() {
             setFeedback({ message: `Error fetching: ${error.message}`, type: "error" });
         }
     }, [error]);
-
+    console.log(logos?.map((logo) => logo?.image));
     const rowDistribution = [5, 4, 3, 2, 1];
+
 
     const distributedLogos = useMemo(() => {
         let index = 0;
@@ -21,7 +21,7 @@ export default function Clientside() {
             index += count;
             return row;
         });
-    }, [logos]);
+    }, [logos, rowDistribution]);
 
     return (
         <div className="container px-md-5 py-5">
@@ -50,10 +50,11 @@ export default function Clientside() {
                                             <div className="border-bottom m-2 rounded-1 box_body">
                                                 <img
                                                     loading='lazy'
-                                                    src={logo?.image || "/placeholder.svg"}
+                                                    src={(logo?.image || "/placeholder.svg").replace(/\.png$/, ".webp")}
                                                     className="w-75 logos animate__animated animate__fadeIn image_shadow img-fluid wow"
                                                     alt={logo?.altText || "Client Logo"}
                                                 />
+
                                             </div>
                                         </div>
                                     ))}
@@ -68,10 +69,11 @@ export default function Clientside() {
                                 <div className="border-bottom m-2 rounded-1 box_body">
                                     <img
                                         loading='lazy'
-                                        src={logo?.image || "/placeholder.svg"}
+                                        src={(logo?.image || "/placeholder.svg").replace(/\.png$/, ".webp")}
                                         className="w-75 logos animate__animated animate__fadeIn image_shadow img-fluid wow"
                                         alt={logo?.altText || "Client Logo"}
                                     />
+
                                 </div>
                             </div>
                         ))}
