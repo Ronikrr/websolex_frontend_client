@@ -1,5 +1,5 @@
 import React from 'react';
-import ios from '../Assets/ios.png'
+import ios from '../Assets/webp/technology/app/ios.webp'
 import android from '../Assets/android (1).png'
 import flutter from '../Assets/flutter2.png'
 import { FaArrowRight } from 'react-icons/fa'; 

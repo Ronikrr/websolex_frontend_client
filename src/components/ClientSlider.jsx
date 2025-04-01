@@ -1,45 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useGetOurWorkQuery } from "../redux/apiSlice";
 import FeedbackMessage from "./feedback";
 
 export default function Clientside() {
-    const { data: logos, error: seterror } = useGetOurWorkQuery();
-    const [feedback, setFeedback] = useState({ message: "", type: "" });
-
-    const handleClear = () => {
-        setFeedback({ message: "", type: "" });
-    };
-
+    const { data: logos = [], error } = useGetOurWorkQuery();
+    const [feedback, setFeedback] = useState(null);
 
     useEffect(() => {
-        if (seterror) {
-            setFeedback({
-                message: `Error fetching : ${seterror.Message}`,
-                type: "error",
-            });
+        if (error) {
+            setFeedback({ message: `Error fetching: ${error.message}`, type: "error" });
         }
-    }, [seterror]);
+    }, [error]);
 
+    const rowDistribution = [5, 4, 3, 2, 1];
 
-    const distributeLogos = (logos, rowDistribution) => {
+    const distributedLogos = useMemo(() => {
         let index = 0;
-        return rowDistribution.map((count) => {
+        return rowDistribution.map(count => {
             const row = logos.slice(index, index + count);
             index += count;
             return row;
         });
-    };
-
-    const rowDistribution = [5, 4, 3, 2, 1]; // Example: First row has 5, second 4, third 3
-
+    }, [logos]);
 
     return (
         <div className="container px-md-5 py-5">
-            {feedback.message && (
+            {feedback && (
                 <FeedbackMessage
                     message={feedback.message}
                     type={feedback.type}
-                    onClear={handleClear}
+                    onClear={() => setFeedback(null)}
                 />
             )}
 
@@ -49,52 +39,45 @@ export default function Clientside() {
                         Valued Clients
                     </h1>
                 </div>
-
                 <div className="col-12 text-center clients mb-md-3">
-                    <div className="d-lg-block d-none">
-                        {distributeLogos(logos || [], rowDistribution).map((row, rowIndex) => (
-                            <div key={rowIndex} className="col-12 d-flex flex-wrap justify-content-center">
-                                {row.map((logo, index) => (
-                                    <div
-                                        key={index}
-                                        className="col-6 col-xl-2 box"
-                                    >
-                                        <div className="border-bottom m-2 rounded-1 box_body">
-                                            <img loading='lazy'
-                                                src={logo?.image || "/placeholder.svg"}
-                                                className="w-75 animate__animated animate__fadeIn image_shadow img-fluid wow"
-                                                alt={logo?.altText || "Client Logo"}
-                                            />
+                    {/* Desktop View */}
+                    {logos.length > 0 && (
+                        <div className="d-lg-block d-none">
+                            {distributedLogos.map((row, rowIndex) => (
+                                <div key={rowIndex} className="d-flex flex-wrap justify-content-center">
+                                    {row.map((logo, index) => (
+                                        <div key={index} className="col-6 col-xl-2 box">
+                                            <div className="border-bottom m-2 rounded-1 box_body">
+                                                <img
+                                                    loading='lazy'
+                                                    src={logo.image || "/placeholder.svg"}
+                                                    className="w-75 logos animate__animated animate__fadeIn image_shadow img-fluid wow"
+                                                    alt={logo.altText || "Client Logo"}
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {/* Mobile View */}
                     <div className="d-flex d-lg-none flex-wrap">
-
-                        {logos?.map((logo, index) => (
-                            <div
-                                key={index}
-                                className="col-6 col-xl-2 box"
-                            >
+                        {logos.map((logo, index) => (
+                            <div key={index} className="col-6 col-xl-2 box">
                                 <div className="border-bottom m-2 rounded-1 box_body">
-                                    <img loading='lazy'
-                                        src={logo?.image || "/placeholder.svg"}
-                                        className="w-75 animate__animated animate__fadeIn image_shadow img-fluid wow"
-                                        alt={logo?.altText || "Client Logo"}
+                                    <img
+                                        loading='lazy'
+                                        src={logo.image || "/placeholder.svg"}
+                                        className="w-75 logos animate__animated animate__fadeIn image_shadow img-fluid wow"
+                                        alt={logo.altText || "Client Logo"}
                                     />
                                 </div>
                             </div>
                         ))}
                     </div>
-
                 </div>
             </div>
         </div>
     );
 }
-
-
-
-

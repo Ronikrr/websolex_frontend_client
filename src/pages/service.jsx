@@ -15,7 +15,7 @@ import branding from "../Assets/branding.png";
 import packging from "../Assets/package.png";
 import website from "../Assets/website.png";
 import application from "../Assets/application.png";
-import ios from "../Assets/ios.png";
+import ios from "../Assets/webp/technology/app/ios.webp";
 import android from "../Assets/android (1).png";
 import logodesign from "../Assets/logo-design.png";
 import flutter from "../Assets/flutter2.png";

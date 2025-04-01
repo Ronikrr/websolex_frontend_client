@@ -79,3 +79,9 @@ code {
   pointer-events: none;
   z-index: 9999;
 }
+.logos {
+  width: 75%;
+  height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import banner_img from "../Assets/banner_section.jpg"
-import review_img1 from '../Assets/client-1.jpg'
-import review_img2 from '../Assets/client-2.jpg'
-import review_img3 from '../Assets/client-3.jpg'
-import review_img4 from '../Assets/client-4.jpg'
+import banner_img from "../Assets/webp/banner/banner.webp"
+import review_img1 from '../Assets/webp/banner/client1.webp'
+import review_img2 from '../Assets/webp/banner/client2.webp'
+import review_img3 from '../Assets/webp/banner/client3.webp'
+import review_img4 from '../Assets/webp/banner/client4.webp'
 import { FaStar } from "react-icons/fa";
-import report_graf from '../Assets/sale-report-removebg-preview.png'
-import graf2 from '../Assets/garf.png'
+import report_graf from '../Assets/webp/banner/map.webp'
+import graf2 from '../Assets/webp/banner/graph.webp'
 import { convertToK } from './convertto';
 import { useGetProjectQuery, useGetSetStaticQuery } from '../redux/apiSlice'
 import FeedbackMessage from './feedback';
@@ -52,7 +52,7 @@ function Banner() {
                             <div className="col-12 col-lg-7 col-xl-6 mb-5 mb-lg-0">
                                 <div className="banner_content2 mt-5  text-center text-lg-start wow animate__animated animate__fadeInLeft">
                                     <h2 className='text-light fs-1'>Empowering Your Digital Transformation</h2>
-                                    <p className='text-light'>At WebSolex Infotech, we specialize in delivering cutting-edge technology solutions that drive innovation and efficiency. From website development to application design, UI/UX services, graphics design, and digital marketing, we provide a full suite of IT services tailored to your needs. Let's build your digital future together.</p>
+                                    <p className='text-light text_p '>At WebSolex Infotech, we specialize in delivering cutting-edge technology solutions that drive innovation and efficiency. From website development to application design, UI/UX services, graphics design, and digital marketing, we provide a full suite of IT services tailored to your needs. Let's build your digital future together.</p>
                                     <div className="banner_button2 d-flex pb-5 border-bottom justify-content-center justify-content-lg-start">
                                         <Link onClick={handleTabClick} to="/contact" className='text-decoration-none text-light bg-light text-dark rounded-pill  me-3 border hover_button1'>Get Started</Link>
                                     </div>
@@ -61,7 +61,7 @@ function Banner() {
                                             <div className="banner_number_sub  pt-md-3 pt-xxl-4 px-md-3 px-xxl-4 text-light">
                                                 <div className="border-right">
                                                     <div className="">
-                                                        <h2>{statics?.successfulproject}%</h2>
+                                                        <h2>{statics?.successfulproject || 0}%</h2>
                                                         <p>Successful Project</p>
                                                     </div>
                                                 </div>
@@ -77,16 +77,16 @@ function Banner() {
                                         </div>
                                         <div className="col-7 col-sm-4 mt-3 mt-md-0">
                                             <div className="banner_number_sub pt-md-3 pt-xxl-4 px-md-2 px-xxl-4 text-light">
-                                                <h2>{statics?.registeredcustomers}+</h2>
+                                                <h2>{statics?.registeredcustomers || 0}+</h2>
                                                 <p>Registered Customers</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-12 col-lg-5 col-xl-6">
+                            <div className="col-12 d-none d-md-block col-lg-5 col-xl-6">
                                 <div className="image_sub_box d-flex justify-content-center position-relative wow animate__animated animate__fadeInRight">
-                                    <img loading='lazy' src={"https://www.t3bucket.com/f/0-banner_section.webp"} alt="" className='col-12 col-md-9 col-xl-8 rounded-4' />
+                                    <img loading='lazy' src={banner_img} alt="" className=' col-12 col-md-9 col-xl-8 rounded-4' />
                                     <div className="review_main_box position-absolute bg-light p-3 d-flex align-items-center justify-content-between rounded-pill col-sm-8 col-md-6 col-lg-10 col-xl-7 col-xxl-6">
                                         <div className="review_image">
                                             <div
@@ -136,7 +136,7 @@ function Banner() {
                                             <p className='mb-0'>Real-Time Sales Analytics</p>
                                         </div>
                                         <div className="col-9 col-sm-5">
-                                            <img loading='lazy' src={report_graf} alt="" className='col-12 border-0 h-100' />
+                                            <img loading='lazy' src={report_graf} alt="" className='  col-12 border-0 h-100' />
                                         </div>
                                     </div>
                                 </div>
