@@ -14,6 +14,7 @@ const Loader = () => {
             </div>
 
         </div>
+
     )
 }
 
