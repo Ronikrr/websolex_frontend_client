@@ -6,14 +6,14 @@ import { LuFacebook } from "react-icons/lu";
 import { FiLinkedin } from "react-icons/fi";
 import { SlSocialBehance } from "react-icons/sl";
 import { Link } from 'react-router-dom';
-import emailjs from 'emailjs-com';
 import { useNavigate } from 'react-router-dom';
 import FeedbackMessage from './feedback';
-import { useGetContactDetailsQuery, useGetSocialDetailsQuery } from '../redux/apiSlice'
+import { useGetContactDetailsQuery, useGetSocialDetailsQuery, useSubmitSubscribeFormMutation } from '../redux/apiSlice'
 import Loader from './loader';
 const Footer = () => {
     const { data: number, loading: contactloading, error: contacterror } = useGetContactDetailsQuery()
     const { data: social, loading: socialloading, error: socialerror } = useGetSocialDetailsQuery()
+    const [submitSubscribeForm] = useSubmitSubscribeFormMutation()
     const navigate = useNavigate()
     const [data, setdata] = useState({ email: "" });
     const handleTabClick = (tab) => {
@@ -59,32 +59,21 @@ const Footer = () => {
         const emailParams = {
             email: data.email,
         }
-        emailjs.send("service_csia6iy", 'template_confirmation', emailParams, "NuQv9XskxV05oXLmu")
-            .then(async (response) => {
-                try {
-                    // Call your API to save the email to the server (backend)
-                    const apiResponse = await fetch('https://websolex-admin.vercel.app/subscribe', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email: data.email }),
-                    });
+        try {
+            await submitSubscribeForm(emailParams).unwrap()
+            setFeedback({
+                message: `Your Email is Subscribed Successfully!`,
+                type: "success",
+            })
+            navigate("/thankyou");
+            setdata({ email: "" })
+        } catch (error) {
+            setFeedback({
+                message: `Error : ${error.message}`,
+                type: "error",
+            })
 
-                    // Check if the API call was successful
-                    if (apiResponse.ok) {
-
-                        navigate('/thankyou');
-                    } else {
-                        alert('Failed to save subscription data. Please try again.');
-                    }
-                } catch (error) {
-                    alert(`Error in API call: ${error.message}`);
-                }
-            }, (error) => {
-                alert(`FAILD... ${error}`);
-            });
-        setdata({ email: "" })
+        }
     }
 
 

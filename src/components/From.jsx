@@ -4,15 +4,15 @@ import { MdEmail, MdLocationPin } from "react-icons/md";
 import { FaPhone, FaClock, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
-import EmailJS from 'emailjs-com';
 import '../forms.css';
 import { AiFillInstagram } from "react-icons/ai";
 import FeedbackMessage from './feedback';
-import { useGetContactDetailsQuery, useGetSocialDetailsQuery } from '../redux/apiSlice'
+import { useGetContactDetailsQuery, useGetSocialDetailsQuery, useSubmitContactFormMutation } from '../redux/apiSlice'
 import Loader from './loader';
 const From = () => {
     const { data: diractcontact, loading: contactloading, error: contacterror } = useGetContactDetailsQuery()
     const { data: diractsocial, loading: socialloading, error: socialerror } = useGetSocialDetailsQuery()
+    const [submitContactForm] = useSubmitContactFormMutation()
     const navigate = useNavigate();
     const [data, setdata] = useState({
         name: "",
@@ -40,16 +40,9 @@ useEffect(() => {
 
 }, [contacterror, socialerror])
 
-
-
 if (contactloading || socialloading) {
     return <Loader />
 }
-
-
-
-
-
 const validateemail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
@@ -103,57 +96,6 @@ const onChange = (e) => {
     }
 };
 
-const sendEmail = (emailParams) => {
-    return EmailJS.send('service_soybehv', 'template_73gw0e4', emailParams, 'yC07B7kWN5O46D558')
-        .then(response => {
-            if (response.status === 200) {
-                setFeedback({
-                    message: `Email successfully sent via EmailJS: ${response}`,
-                    type: "success",
-                })
-                return true;
-            } else {
-                setFeedback({
-                    message: `Error : EmailJS failed to send.`,
-                    type: "error",
-                })
-            }
-        })
-        .catch(error => {
-            setFeedback({
-                message: `Error fetching : ${error.message}`,
-                type: "error",
-            })
-        });
-};
-
-const submitFormToAPI = (emailParams) => {
-    return fetch("https://websolex-admin.vercel.app/contactform", {
-        method: "POST",
-        body: JSON.stringify(emailParams),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(errorMessage => {
-                    setFeedback({
-                        message: `Error linnno:186 : ${errorMessage}`,
-                        type: "error",
-                    })
-                });
-            }
-            return response.json();
-        })
-        .catch(error => {
-            setFeedback({
-                message: `Error linnno:195  : ${error.message}`,
-                type: "error",
-            })
-        });
-};
-
 const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -174,8 +116,7 @@ const onSubmit = async (e) => {
     };
 
     try {
-        await sendEmail(emailParams);
-        await submitFormToAPI(emailParams);
+        await submitContactForm(emailParams).unwrap();
         setFeedback({
             message: `Form submitted successfully!`,
             type: "success",

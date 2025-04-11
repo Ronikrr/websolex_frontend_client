@@ -16,6 +16,7 @@ const missionData = {
 
 function Mission() {
     const { data: project, error, isLoading } = useGetProjectQuery();
+    console.log(project?.projects)
 
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
@@ -82,13 +83,13 @@ function Mission() {
                                             </div>
                                             <div className="line_box line_2 position-absolute text-start">
                                                 <div className="counts">
-                                                    <h1 className="m-0 fw-bold" >{project?.totalClients}+</h1>
+                                                    <h1 className="m-0 fw-bold" >{project?.projects?.totalClients}+</h1>
                                                 </div>
                                                 <p>Client</p>
                                             </div>
                                             <div className="line_box line_3 position-absolute text-start">
                                                 <div className="counts">
-                                                    <h1 className="m-0 fw-bold" >{project?.completedProjects}+</h1>
+                                                    <h1 className="m-0 fw-bold" >{project?.projects?.completedProjects}+</h1>
                                                 </div>
                                                 <p>Completed Project</p>
                                             </div>

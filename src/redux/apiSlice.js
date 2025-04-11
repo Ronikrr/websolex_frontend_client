@@ -2,14 +2,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://websolex-admin.vercel.app/api',
+        baseUrl: 'https://web-backend-pink.vercel.app/api/v1',
     }),
     endpoints: (builder) => ({
         getProject: builder.query({
             query: () => '/project'
-        }),
-        getSetStatic: builder.query({
-            query: () => '/setstatic'
         }),
         getBlogs: builder.query({
             query: () => '/blogpage'
@@ -30,17 +27,17 @@ export const apiSlice = createApi({
             query: () => '/teampage'
         }),
         getLastWorkAdd: builder.query({
-            query: () => '/lastworkadd'
+            query: () => '/lastwork'
         }),
         getLastWorkAddById: builder.query({
-            query: (portfolioid) => `/lastworkadd/${portfolioid}`
+            query: (portfolioid) => `/lastwork/${portfolioid}`
         }),
         getClientRate: builder.query({
             query: () => '/clientrate'
         }),
         submitContactForm: builder.mutation({
             query: (formData) => ({
-                url: '/contactform',
+                url: '/contactfrom',
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -63,7 +60,6 @@ export const apiSlice = createApi({
 
 export const {
     useGetProjectQuery,
-    useGetSetStaticQuery,
     useGetBlogsQuery,
     useGetBlogPostQuery,
     useGetOurWorkQuery,

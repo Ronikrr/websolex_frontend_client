@@ -8,13 +8,11 @@ import review_img4 from '../Assets/webp/banner/client4.webp'
 import { FaStar } from "react-icons/fa";
 import report_graf from '../Assets/webp/banner/map.webp'
 import graf2 from '../Assets/webp/banner/graph.webp'
-import { convertToK } from './convertto';
-import { useGetProjectQuery, useGetSetStaticQuery } from '../redux/apiSlice'
+import { useGetProjectQuery } from '../redux/apiSlice'
 import FeedbackMessage from './feedback';
 import Loader from './loader';
 function Banner() {
     const { data: project, error: projectError, isLoading: projectloading } = useGetProjectQuery();
-    const { data: statics, error: staticError, isLoading: staticLoading } = useGetSetStaticQuery();
     const [feedback, setFeedback] = useState({ message: "", type: "" })
     const handleClear = () => {
         setFeedback({ message: "", type: "" })
@@ -27,15 +25,10 @@ function Banner() {
                 type: "error",
             })
         }
-        if (staticError) {
-            setFeedback({
-                message: `Error : ${staticError.message}`,
-                type: "error",
-            })
-        }
-    }, [projectError, staticError])
 
-    if (projectloading && staticLoading) {
+    }, [projectError])
+
+    if (projectloading) {
         return <div className='loader' ><Loader /></div>
     }
     const handleTabClick = (tab) => {
@@ -61,7 +54,7 @@ function Banner() {
                                             <div className="banner_number_sub  pt-md-3 pt-xxl-4 px-md-3 px-xxl-4 text-light">
                                                 <div className="border-right">
                                                     <div className="">
-                                                        <h2>{statics?.successfulproject || 0}%</h2>
+                                                        <h2>97%</h2>
                                                         <p>Successful Project</p>
                                                     </div>
                                                 </div>
@@ -70,14 +63,14 @@ function Banner() {
                                         <div className="banner_number_sub  pt-md-3 pt-xxl-4  text-light">
                                             <div className="border-right">
                                                 <div className="px-md-3 px-xxl-4">
-                                                    <h2>{convertToK(statics?.joiningcomparies || 0)}</h2>
+                                                    <h2>342.0K</h2>
                                                     <p>Joining Companies</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-7 col-sm-4 mt-3 mt-md-0">
                                             <div className="banner_number_sub pt-md-3 pt-xxl-4 px-md-2 px-xxl-4 text-light">
-                                                <h2>{statics?.registeredcustomers || 0}+</h2>
+                                                <h2>13000+</h2>
                                                 <p>Registered Customers</p>
                                             </div>
                                         </div>
@@ -123,7 +116,7 @@ function Banner() {
                                     <div className="view_sec d-flex flex-wrap align-items-center justify-content-between  col-10 col-md-6 col-lg-9 col-xl-7 col-xxl-6 position-absolute bg-light p-3  rounded-4">
                                         <div className=" col-6 view_content text-center text-md-start">
                                             <span className='fw-semibold'>Total Project</span>
-                                            <h2 className='mb-0'>{project?.completedProjects}+</h2>
+                                            <h2 className='mb-0'>{project?.projects?.completedProjects}+</h2>
                                         </div>
                                         <div className=" col-6 ">
                                             <img loading='lazy' src={graf2} alt="" className='col-9' />
